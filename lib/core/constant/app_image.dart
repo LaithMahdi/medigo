@@ -90,20 +90,20 @@ class AppImage {
 
   static const String imagesOnboard3 = "assets/images/onboard_3.png";
 
-  static const String imagesSpeciailtyCardiologist = "assets/images/speciailty/cardiologist.svg";
+  static const String imagesSpecialityCardiologist = "assets/images/speciality/cardiologist.svg";
 
-  static const String imagesSpeciailtyDentist = "assets/images/speciailty/dentist.svg";
+  static const String imagesSpecialityDentist = "assets/images/speciality/dentist.svg";
 
-  static const String imagesSpeciailtyEntSpecialist = "assets/images/speciailty/ent_specialist.svg";
+  static const String imagesSpecialityEntSpecialist = "assets/images/speciality/ent_specialist.svg";
 
-  static const String imagesSpeciailtyGastroenterologist = "assets/images/speciailty/gastroenterologist.svg";
+  static const String imagesSpecialityGastroenterologist = "assets/images/speciality/gastroenterologist.svg";
 
-  static const String imagesSpeciailtyGynecologist = "assets/images/speciailty/gynecologist.svg";
+  static const String imagesSpecialityGynecologist = "assets/images/speciality/gynecologist.svg";
 
-  static const String imagesSpeciailtyNeurologist = "assets/images/speciailty/neurologist.svg";
+  static const String imagesSpecialityNeurologist = "assets/images/speciality/neurologist.svg";
 
-  static const String imagesSpeciailtyOphthalmologist = "assets/images/speciailty/ophthalmologist.svg";
+  static const String imagesSpecialityOphthalmologist = "assets/images/speciality/ophthalmologist.svg";
 
-  static const String imagesSpeciailtyOtologist = "assets/images/speciailty/otologist.svg";
+  static const String imagesSpecialityOtologist = "assets/images/speciality/otologist.svg";
 }
 
