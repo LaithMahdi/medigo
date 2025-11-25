@@ -27,7 +27,7 @@ flutter:
   #   - assets/images/doctor/
   #   - assets/images/icones/
   #   - assets/images/logo/
-  #   - assets/images/speciailty/
+  #   - assets/images/speciality/
 
   # fonts:
   #   - family: Inter
@@ -39,3 +39,11 @@ flutter:
   #         weight: 600
   #       - asset: assets/fonts/Inter_Bold.ttf
   #         weight: 700
+
+flutter_assets:
+  assets_path: assets/images
+  output_path: lib/core/constant/
+  filename: app_image.dart
+  field_prefix: null
+  ignore_comments: true
+  classname: AppImage
