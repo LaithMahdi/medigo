@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: Config.appName,
       theme: ThemeData(
+        scaffoldBackgroundColor: AppColor.white,
         fontFamily: AppFontFamily.inter,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         elevatedButtonTheme: ElevatedButtonThemeData(
