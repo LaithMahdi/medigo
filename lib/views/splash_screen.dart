@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:medigo/core/constant/app_color.dart';
 import 'package:medigo/core/constant/app_image.dart';
+import '../controllers/splash_controller.dart';
 import '../shared/spacer.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -10,6 +12,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(SplashController());
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
