@@ -17,7 +17,7 @@ class AuthPasswordEyeButton extends StatelessWidget {
     return IconButton(
       onPressed: onPressed,
       icon: SvgPicture.asset(
-        !isObscured ? AppImage.imagesIconesEyeSlash : AppImage.imagesIconesEye,
+        isObscured ? AppImage.imagesIconesEyeSlash : AppImage.imagesIconesEye,
         width: 20,
         height: 20,
         colorFilter: ColorFilter.mode(AppColor.grey1, BlendMode.srcIn),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:medigo/controllers/login_controller.dart';
 import '../../../../core/constant/app_image.dart';
 import '../../widgets/auth_outline_button.dart';
 
-class LoginSocialMediaAuth extends StatelessWidget {
+class LoginSocialMediaAuth extends GetView<LoginController> {
   const LoginSocialMediaAuth({super.key});
 
   @override
@@ -14,14 +16,14 @@ class LoginSocialMediaAuth extends StatelessWidget {
           child: AuthOutlineButton(
             text: "Google",
             icon: AppImage.imagesIconesGoogle,
-            onPressed: () {},
+            onPressed: () => controller.loginWithGoogle(),
           ),
         ),
         Expanded(
           child: AuthOutlineButton(
             text: "Facebook",
             icon: AppImage.imagesIconesFacebook,
-            onPressed: () {},
+            onPressed: () => controller.loginWithFacebook(),
           ),
         ),
       ],

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:medigo/core/config.dart';
 import 'package:medigo/shared/spacer.dart';
+import '../../../controllers/login_controller.dart';
 import '../widgets/auth_bottom_text_button.dart';
 import '../widgets/auth_description.dart';
 import '../widgets/auth_title.dart';
@@ -13,6 +15,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -47,7 +50,7 @@ class LoginScreen extends StatelessWidget {
               child: AuthBottomTextButton(
                 label: "Don't have an account? ",
                 subLabel: "Sign Up",
-                onTap: () {},
+                onTap: () => controller.navigateToRegister(),
               ),
             ),
           ),

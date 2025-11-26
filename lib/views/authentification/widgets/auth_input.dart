@@ -22,6 +22,7 @@ class AuthInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       obscureText: obscureText,
       controller: controller,
       validator: validator,
@@ -54,7 +55,16 @@ class AuthInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: AppColor.button, width: 2),
         ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: AppColor.error, width: 2),
+        ),
         suffixIcon: suffixIcon,
+        errorStyle: TextStyle(
+          color: AppColor.error,
+          fontSize: 13,
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }
