@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medigo/core/constant/app_route.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> _formloginKey = GlobalKey<FormState>();
@@ -22,7 +23,7 @@ class LoginController extends GetxController {
   }
 
   void navigateToRegister() {
-    // TODO: Implement navigation to the registration screen
+    Get.toNamed(AppRoute.register);
   }
 
   void loginWithGoogle() {
@@ -40,5 +41,12 @@ class LoginController extends GetxController {
   void togglePasswordVisibility() {
     _isObscured = _isObscured ? false : true;
     update();
+  }
+
+  @override
+  void onClose() {
+    _email.dispose();
+    _password.dispose();
+    super.onClose();
   }
 }
