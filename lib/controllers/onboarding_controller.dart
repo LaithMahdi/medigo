@@ -1,6 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:medigo/core/config.dart';
+import 'package:medigo/core/constant/app_route.dart';
 import 'package:medigo/data/dummy.dart';
+import 'package:medigo/main.dart';
 
 class OnboardingController extends GetxController {
   final PageController _controller = PageController();
@@ -20,7 +23,8 @@ class OnboardingController extends GetxController {
 
   void nextPage() {
     if (isLastPage()) {
-      debugPrint("This is the last page");
+      sharedPref?.setBool(Config.sharedPrefOnboardingKey, true);
+      Get.offAllNamed(AppRoute.login);
     } else {
       _controller.nextPage(
         duration: Duration(milliseconds: 300),

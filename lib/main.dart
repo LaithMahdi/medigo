@@ -3,10 +3,13 @@ import 'package:get/get.dart';
 import 'package:medigo/core/config.dart';
 import 'package:medigo/core/constant/app_font_family.dart';
 import 'package:medigo/router/index.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'core/constant/app_color.dart';
 
-void main() {
+SharedPreferences? sharedPref;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  sharedPref = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 
