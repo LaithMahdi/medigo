@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../core/constant/app_image.dart';
+import '../views/home/home_screen.dart';
 import 'model/bottom_navigation_model.dart';
 import 'model/filter_model.dart';
 import 'model/onboarding_model.dart';
@@ -141,7 +142,7 @@ List<BottomNavigationModel> bottomNavigationItems = [
   BottomNavigationModel(
     id: 1,
     icon: AppImage.imagesIconesHome,
-    page: Container(color: Colors.amber),
+    page: HomeScreen(),
   ),
   BottomNavigationModel(
     id: 2,
