@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medigo/core/constant/app_color.dart';
 import 'package:medigo/core/constant/app_image.dart';
+import 'package:medigo/data/dummy.dart';
 import 'package:medigo/shared/spacer.dart';
 import 'package:medigo/views/authentification/widgets/auth_input.dart';
 
 import '../../core/config.dart';
 import '../../core/functions/get_greeting_message.dart';
 import 'widgets/home_appbar_title.dart';
+import 'widgets/home_cover_sliding.dart';
+import 'widgets/home_popular_doctor_section.dart';
 import 'widgets/home_search_row.dart';
+import 'widgets/home_see_more_button.dart';
+import 'widgets/home_speciality_section.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,19 +41,20 @@ class HomeScreen extends StatelessWidget {
           ),
           SliverToBoxAdapter(child: HomeSearchRow()),
           SliverToBoxAdapter(child: VerticalSpacer(24)),
+          SliverToBoxAdapter(child: HomeCoverSliding()),
+          SliverToBoxAdapter(child: VerticalSpacer(24)),
           SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: Config.spacing15),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: AspectRatio(
-                  aspectRatio: 326 / 145,
-                  child: Image.asset(AppImage.imagesCover),
-                ),
-              ),
-            ),
+            child: HomeSeeMoreButton(title: "Doctor Specialties", onTap: () {}),
           ),
           SliverToBoxAdapter(child: VerticalSpacer(24)),
+          SliverToBoxAdapter(child: HomeSpecialitySection()),
+
+          SliverToBoxAdapter(child: VerticalSpacer(24)),
+          SliverToBoxAdapter(
+            child: HomeSeeMoreButton(title: "Popular Doctors", onTap: () {}),
+          ),
+          SliverToBoxAdapter(child: VerticalSpacer(24)),
+          SliverToBoxAdapter(child: HomePopularDoctorSection()),
         ],
       ),
     );
