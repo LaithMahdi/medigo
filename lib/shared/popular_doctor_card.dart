@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../core/constant/app_color.dart';
-import '../../../core/constant/app_image.dart';
+import '../core/constant/app_color.dart';
+import '../core/constant/app_image.dart';
 
-class HomePopularDoctorCard extends StatelessWidget {
-  const HomePopularDoctorCard({super.key});
+class PopularDoctorCard extends StatelessWidget {
+  const PopularDoctorCard({super.key, this.enableFullWidth = false});
+
+  final bool enableFullWidth;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width - 40,
+      width: enableFullWidth
+          ? MediaQuery.of(context).size.width
+          : MediaQuery.of(context).size.width - 40,
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(7),

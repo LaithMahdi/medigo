@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medigo/core/constant/app_color.dart';
 import 'package:medigo/data/dummy.dart';
 import 'package:medigo/shared/buttons/custom_outline_button.dart';
-import 'package:medigo/shared/spacer.dart';
+import 'speciality_modal_sheet_title.dart';
 
 class SpecialityModalBottomSheet extends StatelessWidget {
   const SpecialityModalBottomSheet({super.key});
@@ -11,20 +11,11 @@ class SpecialityModalBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 30, horizontal: 24),
+      padding: EdgeInsets.fromLTRB(24, 0, 24, 30),
       height: MediaQuery.of(context).size.height * 0.5,
       child: Column(
         children: [
-          Text(
-            "Sort by",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColor.black,
-            ),
-          ),
-          VerticalSpacer(10),
-          Divider(color: AppColor.grey2),
+          SpecialityModalSheetTitle(title: "Sort by"),
           Spacer(),
           Column(
             children: List.generate(sortByFilters.length, (index) {

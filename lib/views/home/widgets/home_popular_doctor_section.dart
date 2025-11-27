@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/config.dart';
-import 'home_popular_doctor_card.dart';
+import '../../../shared/popular_doctor_card.dart';
 
 class HomePopularDoctorSection extends StatelessWidget {
   const HomePopularDoctorSection({super.key});
@@ -13,7 +13,7 @@ class HomePopularDoctorSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: Config.spacing15),
       child: Row(
         spacing: 20,
-        children: List.generate(5, (index) => HomePopularDoctorCard()),
+        children: List.generate(5, (index) => PopularDoctorCard()),
       ),
     );
   }

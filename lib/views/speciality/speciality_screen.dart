@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:medigo/core/constant/app_color.dart';
-import 'package:medigo/core/constant/app_image.dart';
 import 'package:medigo/shared/spacer.dart';
 import '../../controllers/speciality_controller.dart';
 import '../../core/config.dart';
 import '../../shared/buttons/custom_back_button.dart';
 import '../../shared/search_row.dart';
+import 'widgets/speciality_doctor_list_view.dart';
+import 'widgets/speciality_filter_modal_bottom_sheet.dart';
 import 'widgets/speciality_search_and_sort.dart';
 
 class SpecialityScreen extends StatelessWidget {
@@ -36,10 +37,23 @@ class SpecialityScreen extends StatelessWidget {
           ),
           SliverToBoxAdapter(child: VerticalSpacer(15)),
           SliverToBoxAdapter(
-            child: SearchRow(controller: TextEditingController(), onTap: () {}),
+            child: SearchRow(
+              controller: TextEditingController(),
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => SpecialityFilterModalBottomSheet(),
+                );
+              },
+            ),
           ),
           SliverToBoxAdapter(child: Config.spaceWidget),
           SliverToBoxAdapter(child: SpecialitySearchAndSort()),
+          SliverToBoxAdapter(child: Config.spaceWidget),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: Config.spacing15),
+            sliver: SpecialityDoctorListView(),
+          ),
         ],
       ),
     );

@@ -71,6 +71,18 @@ class MyApp extends StatelessWidget {
           }),
           checkColor: WidgetStateProperty.all(AppColor.white),
         ),
+        bottomSheetTheme: BottomSheetThemeData(
+          backgroundColor: AppColor.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+          ),
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.8,
+          ),
+          showDragHandle: true,
+          dragHandleColor: AppColor.grey2,
+          dragHandleSize: Size(100, 6),
+        ),
       ),
       getPages: getPages,
     );
