@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../shared/spacer.dart';
+
 class Config {
   Config._();
 
@@ -8,4 +10,5 @@ class Config {
   static const String sharedPrefOnboardingKey = "onboarding_completed";
   static const String sharedPrefTokenKey = "auth_token";
   static const double spacing15 = 15;
+  static Widget get spaceWidget => VerticalSpacer(24);
 }

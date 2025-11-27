@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medigo/core/config.dart';
-import '../../../core/constant/app_color.dart';
-import '../../../core/constant/app_image.dart';
-import '../../authentification/widgets/auth_input.dart';
+import '../core/constant/app_color.dart';
+import '../core/constant/app_image.dart';
+import '../views/authentification/widgets/auth_input.dart';
 
-class HomeSearchRow extends StatelessWidget {
-  const HomeSearchRow({super.key});
+class SearchRow extends StatelessWidget {
+  const SearchRow({
+    required this.controller,
+    this.title = "Find the right doctor for you",
+    required this.onTap,
+    super.key,
+  });
+
+  final TextEditingController controller;
+  final String title;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +26,8 @@ class HomeSearchRow extends StatelessWidget {
         children: [
           Expanded(
             child: AuthInput(
-              controller: TextEditingController(),
-              hintText: "Find the right doctor for you",
+              controller: controller,
+              hintText: title,
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(12),
                 child: SvgPicture.asset(
@@ -30,7 +39,7 @@ class HomeSearchRow extends StatelessWidget {
             ),
           ),
           IconButton.filled(
-            onPressed: () {},
+            onPressed: onTap,
             icon: SvgPicture.asset(
               AppImage.imagesIconesFilter,
               width: 20,
