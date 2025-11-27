@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medigo/core/constant/app_color.dart';
 import 'package:medigo/core/constant/app_image.dart';
-import 'package:medigo/data/dummy.dart';
 import 'package:medigo/shared/spacer.dart';
-import 'package:medigo/views/authentification/widgets/auth_input.dart';
-
-import '../../core/config.dart';
-import '../../core/functions/get_greeting_message.dart';
 import 'widgets/home_appbar_title.dart';
+import 'widgets/home_available_doctor_section.dart';
 import 'widgets/home_cover_sliding.dart';
 import 'widgets/home_popular_doctor_section.dart';
 import 'widgets/home_search_row.dart';
@@ -55,6 +50,13 @@ class HomeScreen extends StatelessWidget {
           ),
           SliverToBoxAdapter(child: VerticalSpacer(24)),
           SliverToBoxAdapter(child: HomePopularDoctorSection()),
+          SliverToBoxAdapter(child: VerticalSpacer(24)),
+          SliverToBoxAdapter(
+            child: HomeSeeMoreButton(title: "Available Doctors", onTap: () {}),
+          ),
+          SliverToBoxAdapter(child: VerticalSpacer(24)),
+          SliverToBoxAdapter(child: HomeAvailableDoctorSection()),
+          SliverToBoxAdapter(child: VerticalSpacer(24)),
         ],
       ),
     );
