@@ -10,6 +10,7 @@ class AuthInput extends StatelessWidget {
     this.obscureText = false,
     this.keyboardType,
     this.suffixIcon,
+    this.prefixIcon,
   });
 
   final TextEditingController controller;
@@ -18,6 +19,7 @@ class AuthInput extends StatelessWidget {
   final bool obscureText;
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +62,7 @@ class AuthInput extends StatelessWidget {
           borderSide: BorderSide(color: AppColor.error, width: 2),
         ),
         suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
         errorStyle: TextStyle(
           color: AppColor.error,
           fontSize: 13,

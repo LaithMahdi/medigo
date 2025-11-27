@@ -7,4 +7,5 @@ class Config {
   static String get appName => "Medigo";
   static const String sharedPrefOnboardingKey = "onboarding_completed";
   static const String sharedPrefTokenKey = "auth_token";
+  static const double spacing15 = 15;
 }
