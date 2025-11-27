@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medigo/core/constant/app_color.dart';
 import 'package:medigo/data/dummy.dart';
-import 'package:medigo/shared/buttons/custom_outline_button.dart';
+import 'speciality_modal_sheet_bottom_buttons.dart';
 import 'speciality_modal_sheet_title.dart';
 
 class SpecialityModalBottomSheet extends StatelessWidget {
@@ -37,16 +37,9 @@ class SpecialityModalBottomSheet extends StatelessWidget {
             }),
           ),
           Spacer(),
-          Row(
-            spacing: 16,
-            children: [
-              Expanded(
-                child: CustomOutlineButton(text: "Clear", onPressed: () {}),
-              ),
-              Expanded(
-                child: ElevatedButton(child: Text("Filter"), onPressed: () {}),
-              ),
-            ],
+          SpecialityModalSheetBottomButtons(
+            onPressedClear: () {},
+            onPressedFilter: () {},
           ),
         ],
       ),

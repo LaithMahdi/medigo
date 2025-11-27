@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 
 import '../../../controllers/speciality_controller.dart';
 import '../../../core/constant/app_color.dart';
+import '../../../shared/custom_expansion_tile.dart';
 import '../../../shared/spacer.dart';
+import 'speciality_modal_sheet_bottom_buttons.dart';
 import 'speciality_modal_sheet_title.dart';
 
 class SpecialityFilterModalBottomSheet extends GetView<SpecialityController> {
@@ -18,6 +20,24 @@ class SpecialityFilterModalBottomSheet extends GetView<SpecialityController> {
         children: [
           SpecialityModalSheetTitle(
             title: "Filter - ${controller.speciality.title}",
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  CustomExpansionTile(
+                    title: "Fee / Price",
+                    initiallyExpanded: true,
+                    onExpansionChanged: (expanded) {},
+                    children: [],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SpecialityModalSheetBottomButtons(
+            onPressedClear: () {},
+            onPressedFilter: () {},
           ),
         ],
       ),
