@@ -6,4 +6,6 @@ class AppRoute {
   // authentification
   static const String login = '/login';
   static const String register = '/register';
+  // initial
+  static const String initial = '/initial';
 }

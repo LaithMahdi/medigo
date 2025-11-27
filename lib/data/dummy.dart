@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+
 import '../core/constant/app_image.dart';
+import 'model/bottom_navigation_model.dart';
 import 'model/filter_model.dart';
 import 'model/onboarding_model.dart';
 import 'model/speciality_model.dart';
@@ -131,5 +134,28 @@ List<FilterModel> experienceFilters = [
     name: "10+ years",
     value: "7+",
     image: AppImage.imagesIconesExperience,
+  ),
+];
+
+List<BottomNavigationModel> bottomNavigationItems = [
+  BottomNavigationModel(
+    id: 1,
+    icon: AppImage.imagesIconesHome,
+    page: Container(color: Colors.amber),
+  ),
+  BottomNavigationModel(
+    id: 2,
+    icon: AppImage.imagesIconesHeartFilled,
+    page: Container(color: Colors.red),
+  ),
+  BottomNavigationModel(
+    id: 3,
+    icon: AppImage.imagesIconesCalendar,
+    page: Container(color: Colors.blue),
+  ),
+  BottomNavigationModel(
+    id: 4,
+    icon: AppImage.imagesIconesUser,
+    page: Container(color: Colors.brown),
   ),
 ];
