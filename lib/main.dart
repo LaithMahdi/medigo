@@ -55,6 +55,22 @@ class MyApp extends StatelessWidget {
             elevation: 10,
           ),
         ),
+        checkboxTheme: CheckboxThemeData(
+          fillColor: WidgetStateColor.resolveWith((states) {
+            if (states.contains(WidgetState.selected)) {
+              return AppColor.primary;
+            }
+            return AppColor.grey2;
+          }),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+          side: WidgetStateBorderSide.resolveWith((states) {
+            if (states.contains(WidgetState.selected)) {
+              return BorderSide(color: AppColor.primary, width: 2);
+            }
+            return BorderSide(color: AppColor.grey2, width: 2);
+          }),
+          checkColor: WidgetStateProperty.all(AppColor.white),
+        ),
       ),
       getPages: getPages,
     );

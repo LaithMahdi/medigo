@@ -6,6 +6,7 @@ import '../../../controllers/speciality_controller.dart';
 import '../../../core/config.dart';
 import '../../../core/constant/app_color.dart';
 import '../../../core/constant/app_image.dart';
+import 'speciality_modal_bottom_sheet.dart';
 
 class SpecialitySearchAndSort extends GetView<SpecialityController> {
   const SpecialitySearchAndSort({super.key});
@@ -35,7 +36,16 @@ class SpecialitySearchAndSort extends GetView<SpecialityController> {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) => SpecialityModalBottomSheet(),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+                ),
+                backgroundColor: AppColor.white,
+              );
+            },
             child: Row(
               spacing: 10,
               children: [
