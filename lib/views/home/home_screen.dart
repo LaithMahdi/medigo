@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:medigo/core/constant/app_image.dart';
 import 'package:medigo/shared/spacer.dart';
+import '../../controllers/home_controller.dart';
 import 'widgets/home_appbar_title.dart';
 import 'widgets/home_available_doctor_section.dart';
 import 'widgets/home_cover_sliding.dart';
@@ -15,6 +17,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(HomeController());
     return Scaffold(
       body: CustomScrollView(
         slivers: [

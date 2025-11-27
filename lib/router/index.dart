@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:medigo/core/constant/app_route.dart';
 import 'package:medigo/views/authentification/register/register_screen.dart';
 import 'package:medigo/views/onboarding/onboarding_screen.dart';
+import 'package:medigo/views/speciality/speciality_screen.dart';
 import 'package:medigo/views/splash_screen.dart';
 import '../middleware/auth_middleware.dart';
 import '../middleware/onboarding_middleware.dart';
@@ -22,4 +23,5 @@ List<GetPage> getPages = [
   ),
   GetPage(name: AppRoute.register, page: () => RegisterScreen()),
   GetPage(name: AppRoute.initial, page: () => InitialScreen()),
+  GetPage(name: AppRoute.speciality, page: () => SpecialityScreen()),
 ];

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:medigo/controllers/home_controller.dart';
 import '../../../core/config.dart';
 import '../../../data/dummy.dart';
 import 'home_speciality_item.dart';
 
-class HomeSpecialitySection extends StatelessWidget {
+class HomeSpecialitySection extends GetView<HomeController> {
   const HomeSpecialitySection({super.key});
 
   @override
@@ -15,7 +17,10 @@ class HomeSpecialitySection extends StatelessWidget {
         spacing: 31,
         children: List.generate(specialityItems.length, (index) {
           final speciality = specialityItems[index];
-          return HomeSpecialityItem(speciality: speciality);
+          return HomeSpecialityItem(
+            speciality: speciality,
+            onTap: () => controller.onNavigateToSpeciality(speciality),
+          );
         }),
       ),
     );

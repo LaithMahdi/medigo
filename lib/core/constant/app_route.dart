@@ -8,4 +8,6 @@ class AppRoute {
   static const String register = '/register';
   // initial
   static const String initial = '/initial';
+  // Speciality
+  static const String speciality = '/speciality';
 }
