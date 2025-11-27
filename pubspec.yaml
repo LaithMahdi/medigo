@@ -7,6 +7,7 @@ environment:
   sdk: ^3.9.2
 
 dependencies:
+  another_xlider: ^3.0.2
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter

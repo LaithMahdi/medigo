@@ -40,7 +40,12 @@ class CustomExpansionTile extends StatelessWidget {
       tilePadding: EdgeInsets.symmetric(horizontal: 15),
       initiallyExpanded: initiallyExpanded,
       onExpansionChanged: onExpansionChanged,
-      children: children,
+      children: [
+        Padding(
+          padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
+          child: Column(children: children),
+        ),
+      ],
     );
   }
 }
