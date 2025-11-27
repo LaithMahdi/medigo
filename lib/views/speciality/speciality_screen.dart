@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:medigo/core/constant/app_color.dart';
+import 'package:medigo/core/constant/app_image.dart';
 import 'package:medigo/shared/spacer.dart';
 import '../../controllers/speciality_controller.dart';
 import '../../core/config.dart';
 import '../../shared/buttons/custom_back_button.dart';
 import '../../shared/search_row.dart';
+import 'widgets/speciality_search_and_sort.dart';
 
 class SpecialityScreen extends StatelessWidget {
   const SpecialityScreen({super.key});
@@ -37,6 +39,7 @@ class SpecialityScreen extends StatelessWidget {
             child: SearchRow(controller: TextEditingController(), onTap: () {}),
           ),
           SliverToBoxAdapter(child: Config.spaceWidget),
+          SliverToBoxAdapter(child: SpecialitySearchAndSort()),
         ],
       ),
     );

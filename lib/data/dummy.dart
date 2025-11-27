@@ -160,3 +160,11 @@ List<BottomNavigationModel> bottomNavigationItems = [
     page: Container(color: Colors.brown),
   ),
 ];
+
+List<FilterModel> sortByFilters = [
+  FilterModel(name: "Full Name (A-Z)", value: "name_asc"),
+  FilterModel(name: "Experience (High → Low)", value: "experience_desc"),
+  FilterModel(name: "Rating (High → Low)", value: "rating_desc"),
+  FilterModel(name: "Fee (Low → High)", value: "fee_asc"),
+  FilterModel(name: "Availability", value: "availability"),
+];
