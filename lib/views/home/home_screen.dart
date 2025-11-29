@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:medigo/core/constant/app_image.dart';
 import 'package:medigo/shared/spacer.dart';
 import '../../controllers/home_controller.dart';
-import '../../core/config.dart';
 import 'widgets/home_appbar_title.dart';
 import 'widgets/home_available_doctor_section.dart';
 import 'widgets/home_cover_sliding.dart';
@@ -41,28 +40,28 @@ class HomeScreen extends StatelessWidget {
           SliverToBoxAdapter(
             child: SearchRow(controller: TextEditingController(), onTap: () {}),
           ),
-          SliverToBoxAdapter(child: Config.spaceWidget),
-          SliverToBoxAdapter(child: HomeCoverSliding()),
-          SliverToBoxAdapter(child: Config.spaceWidget),
+          const SliverToBoxAdapter(child: VerticalSpacer(24)),
+          const SliverToBoxAdapter(child: HomeCoverSliding()),
+          const SliverToBoxAdapter(child: VerticalSpacer(24)),
           SliverToBoxAdapter(
             child: HomeSeeMoreButton(title: "Doctor Specialties", onTap: () {}),
           ),
-          SliverToBoxAdapter(child: Config.spaceWidget),
-          SliverToBoxAdapter(child: HomeSpecialitySection()),
+          const SliverToBoxAdapter(child: VerticalSpacer(24)),
+          const SliverToBoxAdapter(child: HomeSpecialitySection()),
 
-          SliverToBoxAdapter(child: Config.spaceWidget),
+          const SliverToBoxAdapter(child: VerticalSpacer(24)),
           SliverToBoxAdapter(
             child: HomeSeeMoreButton(title: "Popular Doctors", onTap: () {}),
           ),
-          SliverToBoxAdapter(child: Config.spaceWidget),
-          SliverToBoxAdapter(child: HomePopularDoctorSection()),
-          SliverToBoxAdapter(child: Config.spaceWidget),
+          const SliverToBoxAdapter(child: VerticalSpacer(24)),
+          const SliverToBoxAdapter(child: HomePopularDoctorSection()),
+          const SliverToBoxAdapter(child: VerticalSpacer(24)),
           SliverToBoxAdapter(
             child: HomeSeeMoreButton(title: "Available Doctors", onTap: () {}),
           ),
-          SliverToBoxAdapter(child: Config.spaceWidget),
-          SliverToBoxAdapter(child: HomeAvailableDoctorSection()),
-          SliverToBoxAdapter(child: Config.spaceWidget),
+          const SliverToBoxAdapter(child: VerticalSpacer(24)),
+          const SliverToBoxAdapter(child: HomeAvailableDoctorSection()),
+          const SliverToBoxAdapter(child: VerticalSpacer(24)),
         ],
       ),
     );

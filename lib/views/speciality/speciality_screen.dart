@@ -48,9 +48,9 @@ class SpecialityScreen extends StatelessWidget {
               },
             ),
           ),
-          SliverToBoxAdapter(child: Config.spaceWidget),
-          SliverToBoxAdapter(child: SpecialitySearchAndSort()),
-          SliverToBoxAdapter(child: Config.spaceWidget),
+          const SliverToBoxAdapter(child: VerticalSpacer(24)),
+          const SliverToBoxAdapter(child: SpecialitySearchAndSort()),
+          const SliverToBoxAdapter(child: VerticalSpacer(24)),
           SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: Config.spacing15),
             sliver: SpecialityDoctorListView(),

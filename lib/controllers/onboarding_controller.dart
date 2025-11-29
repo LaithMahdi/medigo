@@ -2,19 +2,20 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:medigo/core/config.dart';
 import 'package:medigo/core/constant/app_route.dart';
-import 'package:medigo/data/dummy.dart';
-import 'package:medigo/main.dart';
+import 'package:medigo/core/services/storage_service.dart';
+import 'package:medigo/data/repositories/onboarding_repository.dart';
 
 class OnboardingController extends GetxController {
   final PageController _controller = PageController();
   int _currentPage = 0;
+  final _onboardingItems = OnboardingRepository.getOnboardingItems();
 
   // Getters
   PageController get controller => _controller;
   int get currentPage => _currentPage;
 
   bool isLastPage() {
-    return _currentPage == onboardingItems.length - 1;
+    return _currentPage == _onboardingItems.length - 1;
   }
 
   bool isFirstPage() {
@@ -23,7 +24,7 @@ class OnboardingController extends GetxController {
 
   void nextPage() {
     if (isLastPage()) {
-      sharedPref?.setBool(Config.sharedPrefOnboardingKey, true);
+      StorageService.to.setBool(Config.sharedPrefOnboardingKey, true);
       Get.offAllNamed(AppRoute.login);
     } else {
       _controller.nextPage(

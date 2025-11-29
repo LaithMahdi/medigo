@@ -3,10 +3,8 @@ import 'package:get/get.dart';
 import 'package:medigo/shared/custom_range_slider.dart';
 
 import '../../../controllers/speciality_controller.dart';
-import '../../../core/constant/app_color.dart';
 import '../../../shared/custom_expansion_tile.dart';
 import '../../../shared/slider_text_container.dart';
-import '../../../shared/spacer.dart';
 import 'speciality_modal_sheet_bottom_buttons.dart';
 import 'speciality_modal_sheet_title.dart';
 

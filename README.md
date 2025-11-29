@@ -38,12 +38,21 @@ lib/
 │   ├── speciality_controller.dart
 │   └── ...
 ├── core/                        # Core utilities and configurations
-│   ├── config.dart              # App-wide configuration
-│   ├── constant/                # Constants (colors, fonts, images)
-│   └── functions/               # Utility functions
-├── data/                        # Data models and dummy data
-│   ├── model/
-│   └── dummy.dart
+│   ├── config.dart              # App-wide configuration constants
+│   ├── constant/                # Constants (colors, fonts, images, routes)
+│   ├── functions/               # Utility functions (validation, helpers)
+│   ├── services/                # Service layer (storage, etc.)
+│   │   └── storage_service.dart
+│   └── theme/                   # Theme configuration
+│       └── app_theme.dart
+├── data/                        # Data layer
+│   ├── model/                   # Data models
+│   ├── repositories/            # Repository pattern for data access
+│   │   ├── filter_repository.dart
+│   │   ├── navigation_repository.dart
+│   │   ├── onboarding_repository.dart
+│   │   └── speciality_repository.dart
+│   └── dummy.dart               # Temporary data aggregator
 ├── middleware/                  # Route middleware
 │   ├── auth_middleware.dart
 │   └── onboarding_middleware.dart
@@ -63,6 +72,24 @@ lib/
     ├── onboarding/              # Onboarding flow
     └── speciality/              # Doctor specialty browsing
 ```
+
+## 🏗️ Architecture
+
+The app follows a clean architecture pattern with clear separation of concerns:
+
+- **Presentation Layer**: Views and widgets
+- **Business Logic Layer**: GetX controllers
+- **Data Layer**: Repositories and models
+- **Service Layer**: Infrastructure services (storage, etc.)
+- **Core Layer**: Configuration, constants, utilities, and theme
+
+### Key Architectural Features
+
+- **Repository Pattern**: Centralized data access through repositories
+- **Service Layer**: Infrastructure services managed via GetX dependency injection
+- **Const Optimization**: Extensive use of const constructors for performance
+- **Type Safety**: Strong typing throughout the codebase
+- **Scalable Structure**: Easy to extend with new features
 
 ## 🚀 Getting Started
 

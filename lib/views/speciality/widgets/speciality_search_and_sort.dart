@@ -14,7 +14,7 @@ class SpecialitySearchAndSort extends GetView<SpecialityController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: Config.spacing15),
+      padding: const EdgeInsets.symmetric(horizontal: Config.spacing15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

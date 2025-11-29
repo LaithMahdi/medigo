@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medigo/core/config.dart';
 import 'package:medigo/core/constant/app_route.dart';
-import 'package:medigo/main.dart';
+import 'package:medigo/core/services/storage_service.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> _formloginKey = GlobalKey<FormState>();
@@ -24,7 +24,7 @@ class LoginController extends GetxController {
     if (_formloginKey.currentState!.validate()) {
       debugPrint("Form is valid. Proceed with login.");
       Get.offAllNamed(AppRoute.initial);
-      sharedPref?.setBool(Config.sharedPrefTokenKey, true);
+      StorageService.to.setBool(Config.sharedPrefTokenKey, true);
     } else {
       debugPrint("Form is invalid. Please check the input fields.");
     }
