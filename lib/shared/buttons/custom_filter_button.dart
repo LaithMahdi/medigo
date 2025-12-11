@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../core/constant/app_color.dart';
 import '../../data/model/filter_model.dart';
 
@@ -7,11 +8,13 @@ class CustomFilterButton extends StatelessWidget {
     super.key,
     required this.item,
     this.isSelected = false,
+    this.isSvg = false,
     required this.onTap,
   });
 
   final FilterModel item;
   final bool isSelected;
+  final bool isSvg;
   final VoidCallback onTap;
 
   @override
@@ -36,7 +39,9 @@ class CustomFilterButton extends StatelessWidget {
           spacing: 10,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset("${item.image}", width: 18, height: 18),
+            isSvg
+                ? SvgPicture.asset("${item.image}", width: 18, height: 18)
+                : Image.asset("${item.image}", width: 18, height: 18),
             Text(
               item.name,
               style: TextStyle(fontSize: 14, color: AppColor.black),

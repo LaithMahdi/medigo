@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medigo/shared/spacer.dart';
 import '../../../../controllers/speciality_controller.dart';
 import '../speciality_modal_sheet_bottom_buttons.dart';
 import '../speciality_modal_sheet_title.dart';
@@ -35,6 +36,7 @@ class SpecialityFilterModalBottomSheet extends GetView<SpecialityController> {
                   FilterByGender(),
                   FilterByExperienceLevel(),
                   FilterByDoctorRating(),
+                  VerticalSpacer(20),
                 ],
               ),
             ),
