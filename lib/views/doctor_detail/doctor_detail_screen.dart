@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:medigo/core/constant/app_image.dart';
-import '../../core/config.dart';
+import '../../controllers/doctor_detail_controller.dart';
 import '../../core/constant/app_color.dart';
 import '../../shared/buttons/custom_back_button.dart';
 import '../../shared/spacer.dart';
@@ -16,6 +17,7 @@ class DoctorDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(DoctorDetailController());
     return Scaffold(
       backgroundColor: AppColor.white,
       body: CustomScrollView(
@@ -55,7 +57,7 @@ class DoctorDetailScreen extends StatelessWidget {
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(24),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () => controller.onAppointNow(),
           child: Text("Book Appointment"),
         ),
       ),

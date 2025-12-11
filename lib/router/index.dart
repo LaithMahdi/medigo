@@ -7,6 +7,7 @@ import 'package:medigo/views/speciality/speciality_screen.dart';
 import 'package:medigo/views/splash_screen.dart';
 import '../middleware/auth_middleware.dart';
 import '../middleware/onboarding_middleware.dart';
+import '../views/appointment/appointment_screen.dart';
 import '../views/authentification/login/login_screen.dart';
 import '../views/initial/initial_screen.dart';
 
@@ -26,4 +27,5 @@ List<GetPage> getPages = [
   GetPage(name: AppRoute.initial, page: () => InitialScreen()),
   GetPage(name: AppRoute.speciality, page: () => SpecialityScreen()),
   GetPage(name: AppRoute.doctorDetail, page: () => DoctorDetailScreen()),
+  GetPage(name: AppRoute.appointment, page: () => AppointmentScreen()),
 ];
