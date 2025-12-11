@@ -5,9 +5,11 @@ import '../../core/config.dart';
 import '../../core/constant/app_color.dart';
 import '../../shared/buttons/custom_back_button.dart';
 import '../../shared/spacer.dart';
+import 'widgets/doctor_detail_description.dart';
 import 'widgets/doctor_detail_image.dart';
 import 'widgets/doctor_detail_info.dart';
 import 'widgets/doctor_detail_stat_section.dart';
+import 'widgets/doctor_detail_working_hours.dart';
 
 class DoctorDetailScreen extends StatelessWidget {
   const DoctorDetailScreen({super.key});
@@ -43,7 +45,19 @@ class DoctorDetailScreen extends StatelessWidget {
           SliverToBoxAdapter(child: DoctorDetailInfo()),
           SliverToBoxAdapter(child: VerticalSpacer(19)),
           SliverToBoxAdapter(child: DoctorDetailStatSection()),
+          SliverToBoxAdapter(child: VerticalSpacer(19)),
+          SliverToBoxAdapter(child: DoctorDetailDescription()),
+          SliverToBoxAdapter(child: VerticalSpacer(19)),
+          SliverToBoxAdapter(child: DoctorDetailWorkingHours()),
+          SliverToBoxAdapter(child: VerticalSpacer(19)),
         ],
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(24),
+        child: ElevatedButton(
+          onPressed: () {},
+          child: Text("Book Appointment"),
+        ),
       ),
     );
   }
