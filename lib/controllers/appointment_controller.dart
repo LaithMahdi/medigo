@@ -36,4 +36,6 @@ class AppointmentController extends GetxController {
     }
     update();
   }
+
+  void onBooking() {}
 }

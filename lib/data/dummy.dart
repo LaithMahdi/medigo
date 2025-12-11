@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../core/constant/app_image.dart';
 import '../views/home/home_screen.dart';
 import 'model/bottom_navigation_model.dart';
+import 'model/feel_model.dart';
 import 'model/filter_model.dart';
 import 'model/onboarding_model.dart';
 import 'model/speciality_model.dart';
@@ -167,4 +167,25 @@ List<FilterModel> sortByFilters = [
   FilterModel(name: "Rating (High → Low)", value: "rating_desc"),
   FilterModel(name: "Fee (Low → High)", value: "fee_asc"),
   FilterModel(name: "Availability", value: "availability"),
+];
+
+List<FeelModel> fees = [
+  FeelModel(
+    name: "Voice Call",
+    price: 10,
+    icon: AppImage.imagesIconesCall,
+    value: "voice_call",
+  ),
+  FeelModel(
+    name: "Messaging",
+    price: 5,
+    icon: AppImage.imagesIconesMessaging,
+    value: "messaging",
+  ),
+  FeelModel(
+    name: "Video Call",
+    price: 20,
+    icon: AppImage.imagesIconesVideoCall,
+    value: "video_call",
+  ),
 ];
