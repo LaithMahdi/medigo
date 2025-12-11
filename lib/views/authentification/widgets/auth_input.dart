@@ -11,6 +11,7 @@ class AuthInput extends StatelessWidget {
     this.keyboardType,
     this.suffixIcon,
     this.prefixIcon,
+    this.maxLines,
   });
 
   final TextEditingController controller;
@@ -20,12 +21,14 @@ class AuthInput extends StatelessWidget {
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       obscureText: obscureText,
+      maxLines: maxLines ?? 1,
       controller: controller,
       validator: validator,
       keyboardType: keyboardType ?? TextInputType.text,

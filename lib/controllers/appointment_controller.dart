@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:medigo/core/constant/app_route.dart';
 import 'package:medigo/data/model/filter_model.dart';
 
 class AppointmentController extends GetxController {
@@ -37,5 +38,7 @@ class AppointmentController extends GetxController {
     update();
   }
 
-  void onBooking() {}
+  void onBooking() {
+    Get.toNamed(AppRoute.patient);
+  }
 }
