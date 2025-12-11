@@ -8,7 +8,7 @@ import '../../core/config.dart';
 import '../../shared/buttons/custom_back_button.dart';
 import '../../shared/search_row.dart';
 import 'widgets/speciality_doctor_list_view.dart';
-import 'widgets/speciality_filter_modal_bottom_sheet.dart';
+import 'widgets/filter/speciality_filter_modal_bottom_sheet.dart';
 import 'widgets/speciality_search_and_sort.dart';
 
 class SpecialityScreen extends StatelessWidget {
