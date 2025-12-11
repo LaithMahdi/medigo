@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medigo/core/constant/app_image.dart';
+import '../../core/config.dart';
 import '../../core/constant/app_color.dart';
 import '../../shared/buttons/custom_back_button.dart';
 import '../../shared/spacer.dart';
 import 'widgets/doctor_detail_image.dart';
 import 'widgets/doctor_detail_info.dart';
+import 'widgets/doctor_detail_stat_section.dart';
 
 class DoctorDetailScreen extends StatelessWidget {
   const DoctorDetailScreen({super.key});
@@ -13,6 +15,7 @@ class DoctorDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.white,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -39,6 +42,7 @@ class DoctorDetailScreen extends StatelessWidget {
           SliverToBoxAdapter(child: VerticalSpacer(19)),
           SliverToBoxAdapter(child: DoctorDetailInfo()),
           SliverToBoxAdapter(child: VerticalSpacer(19)),
+          SliverToBoxAdapter(child: DoctorDetailStatSection()),
         ],
       ),
     );
