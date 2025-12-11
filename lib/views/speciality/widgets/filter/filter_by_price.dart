@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:medigo/controllers/speciality_controller.dart';
+import '../../../../core/functions/format_price.dart';
 import '../../../../shared/custom_expansion_tile.dart';
 import '../../../../shared/custom_range_slider.dart';
 import '../../../../shared/slider_text_container.dart';
@@ -29,12 +30,12 @@ class FilterByPrice extends StatelessWidget {
             children: [
               Expanded(
                 child: SliderTextContainer(
-                  value: "${controller.minPriceChanges}",
+                  value: formatPrice(controller.minPriceChanges),
                 ),
               ),
               Expanded(
                 child: SliderTextContainer(
-                  value: "${controller.maxPriceChanges}",
+                  value: formatPrice(controller.maxPriceChanges),
                 ),
               ),
             ],
