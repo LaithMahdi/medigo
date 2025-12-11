@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medigo/core/constant/app_route.dart';
 import 'package:medigo/data/model/filter_model.dart';
 import 'package:medigo/data/model/speciality_model.dart';
 
@@ -84,4 +85,6 @@ class SpecialityController extends GetxController {
     _maxPriceChanges = max;
     update();
   }
+
+  void onDetailView() => Get.toNamed(AppRoute.doctorDetail);
 }

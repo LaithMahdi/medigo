@@ -10,4 +10,6 @@ class AppRoute {
   static const String initial = '/initial';
   // Speciality
   static const String speciality = '/speciality';
+  // Doctor Detail
+  static const String doctorDetail = '/doctor-detail';
 }

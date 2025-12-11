@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:medigo/controllers/home_controller.dart';
 import '../../../core/config.dart';
 import '../../../shared/popular_doctor_card.dart';
 
-class HomePopularDoctorSection extends StatelessWidget {
+class HomePopularDoctorSection extends GetView<HomeController> {
   const HomePopularDoctorSection({super.key});
 
   @override
@@ -13,7 +15,10 @@ class HomePopularDoctorSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: Config.spacing15),
       child: Row(
         spacing: 20,
-        children: List.generate(5, (index) => PopularDoctorCard()),
+        children: List.generate(
+          5,
+          (index) => PopularDoctorCard(onTap: () => controller.onDetailView()),
+        ),
       ),
     );
   }

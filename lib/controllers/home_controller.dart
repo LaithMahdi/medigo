@@ -6,4 +6,6 @@ class HomeController extends GetxController {
   void onNavigateToSpeciality(SpecialityModel item) {
     Get.toNamed(AppRoute.speciality, arguments: {"speciality": item});
   }
+
+  void onDetailView() => Get.toNamed(AppRoute.doctorDetail);
 }
