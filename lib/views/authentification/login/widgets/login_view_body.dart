@@ -63,11 +63,18 @@ class LoginViewBody extends GetView<LoginController> {
             ),
           ),
           VerticalSpacer(30),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () => controller.onSubmit(),
-              child: Text("Login"),
+          GetBuilder<LoginController>(
+            builder: (controller) => SizedBox(
+              width: double.infinity,
+              child: controller.isLoading
+                  ? FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: CircularProgressIndicator(color: AppColor.primary),
+                    )
+                  : ElevatedButton(
+                      onPressed: () => controller.onSubmit(),
+                      child: Text("Login"),
+                    ),
             ),
           ),
         ],

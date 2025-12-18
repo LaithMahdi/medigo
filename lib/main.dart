@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:medigo/core/config.dart';
 import 'package:medigo/core/services/storage_service.dart';
 import 'package:medigo/core/theme/app_theme.dart';
 import 'package:medigo/router/index.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+SupabaseClient? supabase;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Initialize services
   await Get.putAsync(() => StorageService().init());
-
+  await dotenv.load(fileName: ".env");
+  await Supabase.initialize(
+    url: Config.supabaseUrlKey,
+    anonKey: Config.supabaseAnonKey,
+  );
+  supabase = Supabase.instance.client;
   runApp(const MyApp());
 }
 
