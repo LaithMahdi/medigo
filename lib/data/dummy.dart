@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../core/constant/app_image.dart';
+import '../views/calendar/calendar_screen.dart';
 import '../views/home/home_screen.dart';
 import 'model/bottom_navigation_model.dart';
 import 'model/feel_model.dart';
@@ -152,7 +153,7 @@ List<BottomNavigationModel> bottomNavigationItems = [
   BottomNavigationModel(
     id: 3,
     icon: AppImage.imagesIconesCalendar,
-    page: Container(color: Colors.blue),
+    page: CalendarScreen(),
   ),
   BottomNavigationModel(
     id: 4,
@@ -188,4 +189,10 @@ List<FeelModel> fees = [
     icon: AppImage.imagesIconesVideoCall,
     value: "video_call",
   ),
+];
+
+List<FilterModel> statuses = [
+  FilterModel(name: "Upcoming", value: "upcoming"),
+  FilterModel(name: "Completed", value: "completed"),
+  FilterModel(name: "Cancelled", value: "cancelled"),
 ];
