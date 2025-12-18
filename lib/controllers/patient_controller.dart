@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
+import 'package:medigo/core/constant/app_route.dart';
 import '../data/model/filter_model.dart';
 
 class PatientController extends GetxController {
@@ -21,7 +21,9 @@ class PatientController extends GetxController {
   TextEditingController get age => _age;
   TextEditingController get detail => _detail;
 
-  void onBooking() {}
+  void onBooking() {
+    Get.offAllNamed(AppRoute.successAppointment);
+  }
 
   void setSelectedGender(FilterModel item) {
     if (_selectedGender == item) {
