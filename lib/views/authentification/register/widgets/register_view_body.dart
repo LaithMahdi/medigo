@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../controllers/register_controller.dart';
+import '../../../../core/constant/app_color.dart';
 import '../../../../core/functions/valid_input.dart';
 import '../../../../shared/spacer.dart';
 import '../../widgets/auth_input.dart';
 import '../../widgets/auth_label.dart';
 import '../../widgets/auth_password_eye_button.dart';
+import 'register_provider_input.dart';
 
 class RegisterViewBody extends GetView<RegisterController> {
   const RegisterViewBody({super.key});
@@ -26,25 +27,7 @@ class RegisterViewBody extends GetView<RegisterController> {
             validator: (value) => validateInput(value, min: 3, max: 80),
           ),
           VerticalSpacer(30),
-          AuthLabel(label: "Email"),
-          VerticalSpacer(15),
-          AuthInput(
-            hintText: "user@mail.com",
-            controller: controller.email,
-            keyboardType: TextInputType.emailAddress,
-            validator: (value) =>
-                validateInput(value, min: 8, max: 200, type: InputType.email),
-          ),
-          VerticalSpacer(30),
-          AuthLabel(label: "Phone Number"),
-          VerticalSpacer(15),
-          AuthInput(
-            hintText: "+1234567890",
-            controller: controller.phoneNumber,
-            keyboardType: TextInputType.phone,
-            validator: (value) =>
-                validateInput(value, min: 8, max: 8, type: InputType.number),
-          ),
+          RegisterProviderInput(),
           VerticalSpacer(30),
           AuthLabel(label: "Password"),
           VerticalSpacer(15),
@@ -83,11 +66,18 @@ class RegisterViewBody extends GetView<RegisterController> {
           ),
 
           VerticalSpacer(30),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () => controller.onSubmit(),
-              child: Text("Register"),
+          GetBuilder<RegisterController>(
+            builder: (controller) => SizedBox(
+              width: double.infinity,
+              child: controller.isLoading
+                  ? FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: CircularProgressIndicator(color: AppColor.primary),
+                    )
+                  : ElevatedButton(
+                      onPressed: () => controller.onSubmit(),
+                      child: Text("Register"),
+                    ),
             ),
           ),
         ],

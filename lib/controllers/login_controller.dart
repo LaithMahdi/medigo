@@ -36,8 +36,8 @@ class LoginController extends GetxController {
       );
       if (response != null) {
         debugPrint("Login successful: ${response.user?.email}");
-        // Get.offAllNamed(AppRoute.initial);
-        // StorageService.to.setBool(Config.sharedPrefTokenKey, true);
+        Get.offAllNamed(AppRoute.initial);
+        StorageService.to.setBool(Config.sharedPrefTokenKey, true);
       }
       setLoading(false);
     } catch (e) {
