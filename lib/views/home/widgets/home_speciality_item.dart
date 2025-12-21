@@ -28,7 +28,12 @@ class HomeSpecialityItem extends StatelessWidget {
               color: AppColor.grey4,
               borderRadius: BorderRadius.circular(7),
             ),
-            child: SvgPicture.asset(speciality.image, width: 25, height: 25),
+            child: SvgPicture.network(
+              speciality.image,
+              width: 25,
+              height: 25,
+              errorBuilder: (context, error, stackTrace) => Placeholder(),
+            ),
           ),
           Text(
             speciality.title,
