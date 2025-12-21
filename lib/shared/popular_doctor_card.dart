@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../core/constant/app_color.dart';
 import '../core/constant/app_image.dart';
+import '../data/model/doctor_model.dart';
 
 class PopularDoctorCard extends StatelessWidget {
   const PopularDoctorCard({
     super.key,
     this.enableFullWidth = false,
+    this.doctor,
     required this.onTap,
   });
 
+  final DoctorModel? doctor;
   final bool enableFullWidth;
   final VoidCallback onTap;
 
@@ -43,7 +46,7 @@ class PopularDoctorCard extends StatelessWidget {
               height: 60,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(AppImage.imagesDoctorDoctor1),
+                  image: NetworkImage("${doctor?.image}"),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(10),
@@ -55,7 +58,7 @@ class PopularDoctorCard extends StatelessWidget {
                 spacing: 3,
                 children: [
                   Text(
-                    "Dr. Ayesha Rahman",
+                    "${doctor?.name}",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -76,7 +79,7 @@ class PopularDoctorCard extends StatelessWidget {
                       ),
                       Text.rich(
                         TextSpan(
-                          text: "5.0 ",
+                          text: "${doctor?.ratingNumber} ",
                           style: TextStyle(
                             fontSize: 12,
                             color: AppColor.black,
@@ -111,7 +114,7 @@ class PopularDoctorCard extends StatelessWidget {
                 ),
                 Text.rich(
                   TextSpan(
-                    text: "\$15",
+                    text: "\$${doctor?.price}",
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColor.primary,

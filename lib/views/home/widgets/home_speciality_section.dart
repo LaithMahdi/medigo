@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medigo/controllers/home_controller.dart';
 import '../../../core/config.dart';
-import '../../../data/dummy.dart';
 import 'home_speciality_item.dart';
 
 class HomeSpecialitySection extends StatelessWidget {
