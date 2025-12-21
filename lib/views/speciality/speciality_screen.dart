@@ -27,7 +27,7 @@ class SpecialityScreen extends StatelessWidget {
               style: TextStyle(fontSize: 16, color: AppColor.grey1),
             ),
             actions: [
-              SvgPicture.asset(
+              SvgPicture.network(
                 controller.speciality.image,
                 width: 22,
                 height: 22,
@@ -51,10 +51,7 @@ class SpecialityScreen extends StatelessWidget {
           const SliverToBoxAdapter(child: VerticalSpacer(24)),
           const SliverToBoxAdapter(child: SpecialitySearchAndSort()),
           const SliverToBoxAdapter(child: VerticalSpacer(24)),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: Config.spacing15),
-            sliver: SpecialityDoctorListView(),
-          ),
+          SpecialityDoctorListView(),
         ],
       ),
     );

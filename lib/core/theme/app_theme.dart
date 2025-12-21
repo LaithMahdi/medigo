@@ -11,12 +11,13 @@ class AppTheme {
   static ThemeData get lightTheme => ThemeData(
     scaffoldBackgroundColor: AppColor.white,
     fontFamily: AppFontFamily.inter,
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primary),
     elevatedButtonTheme: _elevatedButtonTheme,
     appBarTheme: _appBarTheme,
     iconButtonTheme: _iconButtonTheme,
     checkboxTheme: _checkboxTheme,
     bottomSheetTheme: _bottomSheetTheme,
+    tabBarTheme: TabBarThemeData(indicatorColor: AppColor.primary),
   );
 
   /// Elevated button theme

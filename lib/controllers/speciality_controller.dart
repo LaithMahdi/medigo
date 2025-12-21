@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medigo/core/constant/app_route.dart';
+import 'package:medigo/data/model/doctor_model.dart';
 import 'package:medigo/data/model/filter_model.dart';
 import 'package:medigo/data/model/speciality_model.dart';
+import 'package:medigo/main.dart';
 
 class SpecialityController extends GetxController {
   late SpecialityModel _speciality;
@@ -15,6 +17,8 @@ class SpecialityController extends GetxController {
   final double _maxPrice = 1000;
   double _minPriceChanges = 0;
   double _maxPriceChanges = 1000;
+  bool _isLoading = false;
+  final List<DoctorModel> _doctors = [];
 
   // Getters
   SpecialityModel get speciality => _speciality;
@@ -27,12 +31,34 @@ class SpecialityController extends GetxController {
   double get maxPrice => _maxPrice;
   double get minPriceChanges => _minPriceChanges;
   double get maxPriceChanges => _maxPriceChanges;
+  bool get isLoading => _isLoading;
+  List<DoctorModel> get doctors => _doctors;
 
   @override
   void onInit() {
     _speciality = Get.arguments["speciality"];
     debugPrint("Speciality: $_speciality");
+    onLoadPopularDoctors();
     super.onInit();
+  }
+
+  Future<void> onLoadPopularDoctors() async {
+    try {
+      setLoading(true);
+      final data = await supabase!
+          .from('doctor')
+          .select('*')
+          .eq("speciality", _speciality.id);
+      for (var element in data) {
+        _doctors.add(DoctorModel.fromJson(element));
+      }
+      setLoading(false);
+      (false);
+    } catch (e) {
+      debugPrint("Error loading Dcotor: $e");
+      setLoading(false);
+      (false);
+    }
   }
 
   void setSelectedAvailability(FilterModel availability) {
@@ -87,4 +113,9 @@ class SpecialityController extends GetxController {
   }
 
   void onDetailView() => Get.toNamed(AppRoute.doctorDetail);
+
+  void setLoading(bool value) {
+    _isLoading = value;
+    update();
+  }
 }

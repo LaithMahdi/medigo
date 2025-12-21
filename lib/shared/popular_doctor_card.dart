@@ -8,11 +8,11 @@ class PopularDoctorCard extends StatelessWidget {
   const PopularDoctorCard({
     super.key,
     this.enableFullWidth = false,
-    this.doctor,
+    required this.doctor,
     required this.onTap,
   });
 
-  final DoctorModel? doctor;
+  final DoctorModel doctor;
   final bool enableFullWidth;
   final VoidCallback onTap;
 
@@ -46,7 +46,7 @@ class PopularDoctorCard extends StatelessWidget {
               height: 60,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage("${doctor?.image}"),
+                  image: NetworkImage(doctor.image),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(10),
@@ -58,7 +58,7 @@ class PopularDoctorCard extends StatelessWidget {
                 spacing: 3,
                 children: [
                   Text(
-                    "${doctor?.name}",
+                    doctor.name,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -79,7 +79,7 @@ class PopularDoctorCard extends StatelessWidget {
                       ),
                       Text.rich(
                         TextSpan(
-                          text: "${doctor?.ratingNumber} ",
+                          text: "${doctor.ratingNumber} ",
                           style: TextStyle(
                             fontSize: 12,
                             color: AppColor.black,
@@ -114,7 +114,7 @@ class PopularDoctorCard extends StatelessWidget {
                 ),
                 Text.rich(
                   TextSpan(
-                    text: "\$${doctor?.price}",
+                    text: "\$${doctor.price}",
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColor.primary,

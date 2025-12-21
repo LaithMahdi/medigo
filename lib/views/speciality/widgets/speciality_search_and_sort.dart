@@ -18,21 +18,24 @@ class SpecialitySearchAndSort extends GetView<SpecialityController> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text.rich(
-            style: TextStyle(fontSize: 14, color: AppColor.grey1),
-            TextSpan(
-              text: "114 Found for “",
-              children: [
-                TextSpan(
-                  text: controller.speciality.title,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: AppColor.grey1,
-                    fontWeight: FontWeight.w600,
+          GetBuilder<SpecialityController>(
+            builder: (controller) => Text.rich(
+              style: TextStyle(fontSize: 14, color: AppColor.grey1),
+              TextSpan(
+                text:
+                    "${controller.isLoading ? '0' : '${controller.doctors.length}'} Found for “",
+                children: [
+                  TextSpan(
+                    text: controller.speciality.title,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: AppColor.grey1,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-                TextSpan(text: "”"),
-              ],
+                  TextSpan(text: "”"),
+                ],
+              ),
             ),
           ),
           InkWell(

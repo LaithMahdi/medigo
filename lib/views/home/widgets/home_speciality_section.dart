@@ -9,17 +9,13 @@ class HomeSpecialitySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: Config.spacing15),
-      scrollDirection: Axis.horizontal,
-      child: GetBuilder<HomeController>(
-        builder: (controller) => controller.isLoading
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [CircularProgressIndicator()],
-              )
-            : Row(
+    return GetBuilder<HomeController>(
+      builder: (controller) => controller.isLoading
+          ? Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: Config.spacing15),
+              scrollDirection: Axis.horizontal,
+              child: Row(
                 spacing: 31,
                 children: List.generate(controller.specialities.length, (
                   index,
@@ -31,7 +27,7 @@ class HomeSpecialitySection extends StatelessWidget {
                   );
                 }),
               ),
-      ),
+            ),
     );
   }
 }
