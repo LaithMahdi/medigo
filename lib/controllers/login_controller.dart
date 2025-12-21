@@ -8,8 +8,12 @@ import 'package:medigo/main.dart';
 class LoginController extends GetxController {
   final GlobalKey<FormState> _formloginKey = GlobalKey<FormState>();
   bool _isObscured = true;
-  final TextEditingController _email = TextEditingController();
-  final TextEditingController _password = TextEditingController();
+  final TextEditingController _email = TextEditingController(
+    text: "mahdi@gmail.com",
+  );
+  final TextEditingController _password = TextEditingController(
+    text: "123456789",
+  );
   bool _isLoading = false;
 
   // Getters
@@ -35,9 +39,14 @@ class LoginController extends GetxController {
         password: _password.text,
       );
       if (response != null) {
-        debugPrint("Login successful: ${response.user?.email}");
+        // print token
+        debugPrint("Login successful: ${response.user} \n ${response.session}");
+        debugPrint(response.session?.accessToken);
         Get.offAllNamed(AppRoute.initial);
-        StorageService.to.setBool(Config.sharedPrefTokenKey, true);
+        StorageService.to.setString(
+          Config.sharedPrefTokenKey,
+          response.session!.accessToken,
+        );
       }
       setLoading(false);
     } catch (e) {

@@ -29,48 +29,48 @@ List<OnboardingModel> onboardingItems = [
   ),
 ];
 
-List<SpecialityModel> specialityItems = [
-  SpecialityModel(
-    id: "0",
-    title: "Dentist",
-    image: AppImage.imagesSpecialityDentist,
-  ),
-  SpecialityModel(
-    id: "1",
-    title: "Ophthalmologist",
-    image: AppImage.imagesSpecialityOphthalmologist,
-  ),
-  SpecialityModel(
-    id: "2",
-    title: "ENT Specialist",
-    image: AppImage.imagesSpecialityEntSpecialist,
-  ),
-  SpecialityModel(
-    id: "3",
-    title: "Otologist",
-    image: AppImage.imagesSpecialityOtologist,
-  ),
-  SpecialityModel(
-    id: "4",
-    title: "Gynecologist",
-    image: AppImage.imagesSpecialityGynecologist,
-  ),
-  SpecialityModel(
-    id: "5",
-    title: "Cardiologist",
-    image: AppImage.imagesSpecialityCardiologist,
-  ),
-  SpecialityModel(
-    id: "6",
-    title: "Gastroenterologist",
-    image: AppImage.imagesSpecialityGastroenterologist,
-  ),
-  SpecialityModel(
-    id: "7",
-    title: "Neurologist",
-    image: AppImage.imagesSpecialityNeurologist,
-  ),
-];
+// List<SpecialityModel> specialityItems = [
+//   SpecialityModel(
+//     id: "0",
+//     title: "Dentist",
+//     image: AppImage.imagesSpecialityDentist,
+//   ),
+//   SpecialityModel(
+//     id: "1",
+//     title: "Ophthalmologist",
+//     image: AppImage.imagesSpecialityOphthalmologist,
+//   ),
+//   SpecialityModel(
+//     id: "2",
+//     title: "ENT Specialist",
+//     image: AppImage.imagesSpecialityEntSpecialist,
+//   ),
+//   SpecialityModel(
+//     id: "3",
+//     title: "Otologist",
+//     image: AppImage.imagesSpecialityOtologist,
+//   ),
+//   SpecialityModel(
+//     id: "4",
+//     title: "Gynecologist",
+//     image: AppImage.imagesSpecialityGynecologist,
+//   ),
+//   SpecialityModel(
+//     id: "5",
+//     title: "Cardiologist",
+//     image: AppImage.imagesSpecialityCardiologist,
+//   ),
+//   SpecialityModel(
+//     id: "6",
+//     title: "Gastroenterologist",
+//     image: AppImage.imagesSpecialityGastroenterologist,
+//   ),
+//   SpecialityModel(
+//     id: "7",
+//     title: "Neurologist",
+//     image: AppImage.imagesSpecialityNeurologist,
+//   ),
+// ];
 
 List<FilterModel> availabilityFilters = [
   FilterModel(

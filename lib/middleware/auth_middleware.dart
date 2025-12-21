@@ -7,7 +7,8 @@ import 'package:medigo/core/services/storage_service.dart';
 class AuthMiddleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
-    if (StorageService.to.getBool(Config.sharedPrefTokenKey) == true) {
+    final token = StorageService.to.getString(Config.sharedPrefTokenKey);
+    if (token != null && token.isNotEmpty) {
       return const RouteSettings(name: AppRoute.initial);
     }
 
