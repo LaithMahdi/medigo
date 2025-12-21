@@ -2,6 +2,23 @@
 
 A Flutter-based medical appointment application that connects patients with healthcare providers.
 
+---
+
+## 🎓 Video Tutorial
+
+<div align="center">
+
+### 📺 Complete Flutter & MySQL Integration Course
+
+[![YouTube Playlist](https://img.shields.io/badge/YouTube-Playlist-red?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/playlist?list=PLGwhLIITEIB_u-pBiiUxAf3Kz3Nu9VAY8)
+
+**Learn how to build this app from scratch!**  
+_Follow along with step-by-step video tutorials covering Flutter development and MySQL database integration._
+
+</div>
+
+---
+
 ## 📱 About
 
 Medigo is a modern healthcare mobile application built with Flutter, designed to streamline the process of finding and booking appointments with medical professionals. The app features an intuitive interface for browsing doctors by specialty, viewing profiles, and managing healthcare appointments.
@@ -125,6 +142,38 @@ The app follows a clean architecture pattern with clear separation of concerns:
    flutter run -d android
    flutter run -d ios
    ```
+
+### Database Setup
+
+#### SQL Schema
+
+**Insert Specialities:**
+
+```sql
+INSERT INTO speciality (name, icon, is_active) VALUES
+('Dentist', '', true),
+('Ophthalmologist', '', true),
+('ENT Specialist', '', true),
+('Otologist', '', true),
+('Gynecologist', '', true),
+('Cardiologist', '', true),
+('Gastroenterologist', '', true),
+('Neurologist', '', true);
+```
+
+**Insert Doctors:**
+
+```sql
+INSERT INTO doctor (full_name, description, image, price, experience_number, rating_number, patient_number, speciality) VALUES
+('Dr. Sarah Johnson', 'Experienced dentist with 10+ years in cosmetic and general dentistry', '', 120.50, 10, 4, 2500, 1),
+('Dr. Michael Chen', 'Specialized in cataract surgery and laser eye treatments', '', 180.75, 15, 5, 3200, 2),
+('Dr. James Wilson', 'Expert in ear, nose and throat disorders with focus on pediatric ENT', '', 155.00, 12, 4, 1800, 3),
+('Dr. Emma Rodriguez', 'Otology specialist with expertise in hearing disorders and implants', '', 165.25, 8, 4, 1200, 4),
+('Dr. Lisa Thompson', 'Gynecology and obstetrics specialist with focus on women''s health', '', 135.00, 14, 5, 2800, 5),
+('Dr. Robert Davis', 'Cardiologist specializing in interventional cardiology and heart failure', '', 220.00, 20, 5, 4500, 6),
+('Dr. Amanda Lee', 'Gastroenterologist expert in endoscopic procedures and digestive health', '', 175.50, 11, 4, 1900, 7),
+('Dr. Thomas Brown', 'Neurologist with specialization in movement disorders and epilepsy', '', 195.75, 16, 5, 3100, 8);
+```
 
 ### Build for Production
 
