@@ -10,17 +10,22 @@ class HomeController extends GetxController {
   bool _isLoading = false;
   bool _isLoadingPopularDoctors = false;
   final List<DoctorModel> _popularDoctors = [];
+  final List<DoctorModel> _onlinesDoctors = [];
+  bool _isLoadingOnlinesDoctors = false;
 
   // Getters
   List<SpecialityModel> get specialities => _specialities;
   bool get isLoading => _isLoading;
   bool get isLoadingPopularDoctors => _isLoadingPopularDoctors;
   List<DoctorModel> get popularDoctors => _popularDoctors;
+  List<DoctorModel> get onlinesDoctors => _onlinesDoctors;
+  bool get isLoadingOnlinesDoctors => _isLoadingOnlinesDoctors;
 
   @override
   void onInit() {
     onLoadData();
     onLoadPopularDoctors();
+    onLoadOnlineDoctors();
     super.onInit();
   }
 
@@ -53,11 +58,32 @@ class HomeController extends GetxController {
       for (var element in data) {
         _popularDoctors.add(DoctorModel.fromJson(element));
       }
-      setLoadingPopularDoctors(true);
+      setLoadingPopularDoctors(false);
       (false);
     } catch (e) {
       debugPrint("Error loading Dcotor: $e");
-      setLoadingPopularDoctors(true);
+      setLoadingPopularDoctors(false);
+      (false);
+    }
+  }
+
+  Future<void> onLoadOnlineDoctors() async {
+    try {
+      setLoadingOnlinesDoctors(true);
+      final data = await supabase!
+          .from('doctor')
+          .select('*,speciality!inner(*)')
+          .eq("status", "online")
+          .limit(5);
+
+      for (var element in data) {
+        _onlinesDoctors.add(DoctorModel.fromJson(element));
+      }
+      setLoadingOnlinesDoctors(false);
+      (false);
+    } catch (e) {
+      debugPrint("Error loading online Dcotor: $e");
+      setLoadingOnlinesDoctors(false);
       (false);
     }
   }
@@ -76,6 +102,11 @@ class HomeController extends GetxController {
 
   void setLoadingPopularDoctors(bool value) {
     _isLoadingPopularDoctors = value;
+    update();
+  }
+
+  void setLoadingOnlinesDoctors(bool value) {
+    _isLoadingOnlinesDoctors = value;
     update();
   }
 }

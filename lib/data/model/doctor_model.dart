@@ -14,6 +14,7 @@ class DoctorModel {
   String? createdAt;
   String? availability;
   SpecialityModel? speciality;
+  String? status;
 
   DoctorModel({
     required this.id,
@@ -29,6 +30,7 @@ class DoctorModel {
     this.createdAt,
     this.availability,
     this.speciality,
+    this.status,
   });
 
   factory DoctorModel.fromJson(Map<String, dynamic> json) {
@@ -47,11 +49,12 @@ class DoctorModel {
       speciality: json['speciality'] != null
           ? SpecialityModel.fromJson(json['speciality'])
           : null,
+      status: json['status'],
     );
   }
 
   @override
   String toString() {
-    return 'DoctorModel{id: $id, name: $name, image: $image, description: $description, gender: $gender, specialityId: $specialityId, price: $price, experienceNumber: $experienceNumber, ratingNumber: $ratingNumber, patientNumber: $patientNumber, createdAt: $createdAt, availability: $availability}';
+    return 'DoctorModel{id: $id, name: $name, image: $image, description: $description, gender: $gender, specialityId: $specialityId, price: $price, experienceNumber: $experienceNumber, ratingNumber: $ratingNumber, patientNumber: $patientNumber, createdAt: $createdAt, availability: $availability, status: $status}';
   }
 }
