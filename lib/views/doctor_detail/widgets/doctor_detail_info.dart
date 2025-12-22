@@ -35,7 +35,7 @@ class DoctorDetailInfo extends GetView<DoctorDetailController> {
                 ),
 
                 child: Text(
-                  "${controller.doctor.speciality?.title}",
+                  "${controller.doctor.specialityModel?.title}",
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,

@@ -52,7 +52,7 @@ class HomeController extends GetxController {
       setLoadingPopularDoctors(true);
       final data = await supabase!
           .from('doctor')
-          .select('*,speciality!inner(*)')
+          .select('*, spec:speciality!inner(*)')
           .limit(5);
 
       for (var element in data) {
@@ -72,7 +72,7 @@ class HomeController extends GetxController {
       setLoadingOnlinesDoctors(true);
       final data = await supabase!
           .from('doctor')
-          .select('*,speciality!inner(*)')
+          .select('*, spec:speciality!inner(*)')
           .eq("status", "online")
           .limit(5);
 

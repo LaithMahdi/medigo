@@ -66,7 +66,7 @@ class PopularDoctorCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "${doctor.speciality?.title}",
+                    "${doctor.specialityModel?.title}",
                     style: TextStyle(fontSize: 12, color: AppColor.grey1),
                   ),
                   Row(

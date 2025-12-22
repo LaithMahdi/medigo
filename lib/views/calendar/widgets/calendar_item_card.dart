@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:medigo/data/model/appointment_model.dart';
 import '../../../core/constant/app_color.dart';
 import '../../../core/constant/app_image.dart';
 import 'calendar_detail_widget.dart';
 import 'calendar_icon_button.dart';
 
 class CalendarItemCard extends StatelessWidget {
-  const CalendarItemCard({super.key});
+  const CalendarItemCard({
+    super.key,
+    required this.appointment,
+    required this.onCancel,
+  });
+
+  final AppointmentModel appointment;
+  final VoidCallback onCancel;
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +45,14 @@ class CalendarItemCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 27,
-                backgroundImage: AssetImage(AppImage.imagesDoctorDoctor1),
+                backgroundImage: NetworkImage("${appointment.doctor?.image}"),
               ),
               Column(
                 spacing: 6,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Margie Dawson",
+                    "${appointment.doctor?.name}",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -51,7 +60,7 @@ class CalendarItemCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Dentist",
+                    "${appointment.specialityModel?.title}",
                     style: TextStyle(fontSize: 12, color: AppColor.grey1),
                   ),
                 ],
@@ -68,61 +77,50 @@ class CalendarItemCard extends StatelessWidget {
               Expanded(
                 child: CalendarDetailWidget(
                   label: "Date",
-                  value: "12 Dec, 2023",
+                  value: appointment.date != null
+                      ? DateFormat(
+                          "d MMM y",
+                        ).format(DateTime.parse(appointment.date!))
+                      : "N/A",
                   icon: AppImage.imagesIconesCalendar,
                 ),
               ),
               Expanded(
                 child: CalendarDetailWidget(
                   label: "Time",
-                  value: "10:00",
+                  value: "${appointment.time}",
                   icon: AppImage.imagesIconesClock,
                 ),
               ),
             ],
           ),
-          Divider(color: AppColor.grey3),
-          Row(
-            spacing: 15,
-            children: [
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColor.grey3,
-                    shadowColor: Colors.transparent,
-                    elevation: 0,
-                  ),
-                  child: Text(
-                    "Re-book",
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: AppColor.black,
+          appointment.status == "pending"
+              ? Column(
+                  spacing: 15,
+                  children: [
+                    Divider(color: AppColor.grey3),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: onCancel,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColor.red,
+                          shadowColor: Colors.transparent,
+                          elevation: 0,
+                        ),
+                        child: Text(
+                          "Cancel Appointment",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: AppColor.white,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColor.red,
-                    shadowColor: Colors.transparent,
-                    elevation: 0,
-                  ),
-                  child: Text(
-                    "Leave Review",
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: AppColor.white,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+                  ],
+                )
+              : SizedBox(),
         ],
       ),
     );

@@ -106,6 +106,7 @@ class PatientController extends GetxController {
         consultationFee: _selectedFee?.value,
         date: _date!.toIso8601String(),
         userId: userId,
+        status: "pending",
       );
 
       debugPrint("Inserting appointment: $appointment");

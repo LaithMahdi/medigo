@@ -13,7 +13,8 @@ class DoctorModel {
   int patientNumber;
   String? createdAt;
   String? availability;
-  SpecialityModel? speciality;
+  int? speciality;
+  SpecialityModel? specialityModel;
   String? status;
 
   DoctorModel({
@@ -31,6 +32,7 @@ class DoctorModel {
     this.availability,
     this.speciality,
     this.status,
+    this.specialityModel,
   });
 
   factory DoctorModel.fromJson(Map<String, dynamic> json) {
@@ -40,15 +42,21 @@ class DoctorModel {
       image: json['image'],
       description: json['description'],
       gender: json['gender'],
+      specialityId: json['speciality'] is int ? json['speciality'] : null,
       price: (json['price'] as num).toDouble(),
       experienceNumber: json['experience_number'],
       ratingNumber: json['rating_number'],
       patientNumber: json['patient_number'],
       createdAt: json['created_at'],
       availability: json['availability'],
-      speciality: json['speciality'] != null
-          ? SpecialityModel.fromJson(json['speciality'])
-          : null,
+      speciality: json['speciality'],
+      specialityModel:
+          json['spec'] != null && json['spec'] is Map<String, dynamic>
+          ? SpecialityModel.fromJson(json['spec'])
+          : (json['speciality'] != null &&
+                    json['speciality'] is Map<String, dynamic>
+                ? SpecialityModel.fromJson(json['speciality'])
+                : null),
       status: json['status'],
     );
   }

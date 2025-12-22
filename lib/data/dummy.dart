@@ -214,7 +214,7 @@ List<FeelModel> fees = [
 ];
 
 List<FilterModel> statuses = [
-  FilterModel(name: "Upcoming", value: "upcoming"),
+  FilterModel(name: "Pending", value: "pending"),
   FilterModel(name: "Completed", value: "completed"),
   FilterModel(name: "Cancelled", value: "cancelled"),
 ];

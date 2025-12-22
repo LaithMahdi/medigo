@@ -1,3 +1,6 @@
+import 'package:medigo/data/model/doctor_model.dart';
+import 'package:medigo/data/model/speciality_model.dart';
+
 class AppointmentModel {
   int? id;
   String? createdAt;
@@ -8,6 +11,9 @@ class AppointmentModel {
   String? userId;
   String? consultationType;
   String? consultationFee;
+  String? status;
+  DoctorModel? doctor;
+  SpecialityModel? specialityModel;
 
   AppointmentModel({
     this.id,
@@ -19,6 +25,9 @@ class AppointmentModel {
     this.userId,
     this.consultationType,
     this.consultationFee,
+    this.status,
+    this.doctor,
+    this.specialityModel,
   });
 
   Map<String, dynamic> toJson() {
@@ -30,6 +39,7 @@ class AppointmentModel {
       "user_id": userId,
       "consultation_type": consultationType,
       "consultation_fee": consultationFee,
+      "status": status,
     };
   }
 
@@ -40,15 +50,26 @@ class AppointmentModel {
       date: json["date"],
       time: json["time"],
       patientId: json["patient_id"],
-      doctorId: json["doctor_id"],
+      // doctorId: json["doctor_id"],
       userId: json["user_id"],
       consultationType: json["consultation_type"],
       consultationFee: json["consultation_fee"],
+      status: json["status"],
+      doctor: json['doctor'] != null
+          ? DoctorModel.fromJson(json['doctor'])
+          : null,
+      specialityModel:
+          json['spec'] != null && json['spec'] is Map<String, dynamic>
+          ? SpecialityModel.fromJson(json['spec'])
+          : (json['speciality'] != null &&
+                    json['speciality'] is Map<String, dynamic>
+                ? SpecialityModel.fromJson(json['speciality'])
+                : null),
     );
   }
 
   @override
   String toString() {
-    return 'AppointmentModel{id: $id, createdAt: $createdAt, date: $date, time: $time, patientId: $patientId, doctorId: $doctorId, userId: $userId, consultationType: $consultationType, consultationFee: $consultationFee}';
+    return 'AppointmentModel{id: $id, createdAt: $createdAt, date: $date, time: $time, patientId: $patientId, doctorId: $doctorId, userId: $userId, consultationType: $consultationType, consultationFee: $consultationFee, status: $status, doctor: $doctor, specialityModel: $specialityModel}';
   }
 }
