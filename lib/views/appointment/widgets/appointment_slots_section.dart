@@ -15,11 +15,13 @@ class AppointmentSlotsSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: Config.spacing15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+
         spacing: 20,
         children: [
           DoctorDetailTitle("Available Slots"),
           GetBuilder<AppointmentController>(
             builder: (controller) => Wrap(
+              clipBehavior: Clip.none,
               spacing: 13,
               runSpacing: 10,
               children: List.generate(availabilityFilters.length, (index) {

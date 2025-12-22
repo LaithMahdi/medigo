@@ -6,7 +6,6 @@ import 'model/bottom_navigation_model.dart';
 import 'model/feel_model.dart';
 import 'model/filter_model.dart';
 import 'model/onboarding_model.dart';
-import 'model/speciality_model.dart';
 
 List<OnboardingModel> onboardingItems = [
   OnboardingModel(
@@ -84,6 +83,29 @@ List<FilterModel> availabilityFilters = [
     image: AppImage.imagesIconesAfternoon,
   ),
   FilterModel(name: "Night", value: "night", image: AppImage.imagesIconesNight),
+];
+
+List<String> morningTimeAvailabilityFilters = [
+  "8:00",
+  "9:00",
+  "10:00",
+  "11:00",
+];
+
+List<String> afternoonTimeAvailabilityFilters = [
+  "12:00",
+  "13:00",
+  "14:00",
+  "15:00",
+  "16:00",
+];
+
+List<String> nightTimeAvailabilityFilters = [
+  "17:00",
+  "18:00",
+  "19:00",
+  "20:00",
+  "21:00",
 ];
 
 List<FilterModel> consultationTypeFilters = [

@@ -12,10 +12,10 @@ class DoctorDetailController extends GetxController {
 
   @override
   void onInit() {
-    _doctor = Get.arguments['doctor'];
     debugPrint("Doctor Detail: $_doctor");
     super.onInit();
   }
 
-  onAppointNow() => Get.toNamed(AppRoute.appointment);
+  onAppointNow() =>
+      Get.toNamed(AppRoute.appointment, arguments: {"doctor": _doctor});
 }

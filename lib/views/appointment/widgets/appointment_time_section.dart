@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../controllers/appointment_controller.dart';
 import '../../../core/config.dart';
+import '../../../data/dummy.dart';
 import '../../doctor_detail/widgets/doctor_detail_title.dart';
 import 'appointment_time.dart';
 
@@ -18,17 +19,27 @@ class AppointmentTimeSection extends StatelessWidget {
         children: [
           DoctorDetailTitle("Available Time"),
           GetBuilder<AppointmentController>(
-            builder: (controller) => Wrap(
-              spacing: 13,
-              runSpacing: 10,
-              children: List.generate(4, (index) {
-                return AppointmentTime(
-                  item: "14:00",
-                  isSelected: controller.selectedTime == "14:00",
-                  onTap: () => controller.selectTime("14:00"),
-                );
-              }),
-            ),
+            builder: (controller) {
+              List<String> times =
+                  controller.selectedAvailability?.value == "morning"
+                  ? morningTimeAvailabilityFilters
+                  : controller.selectedAvailability?.value == "afternoon"
+                  ? afternoonTimeAvailabilityFilters
+                  : nightTimeAvailabilityFilters;
+
+              return Wrap(
+                spacing: 13,
+                runSpacing: 10,
+                children: List.generate(times.length, (index) {
+                  final time = times[index];
+                  return AppointmentTime(
+                    item: time,
+                    isSelected: controller.selectedTime == time,
+                    onTap: () => controller.selectTime(time),
+                  );
+                }),
+              );
+            },
           ),
         ],
       ),
