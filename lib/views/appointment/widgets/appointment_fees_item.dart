@@ -8,33 +8,40 @@ class AppointmentFeesItem extends StatelessWidget {
   const AppointmentFeesItem({
     super.key,
     required this.item,
+    required this.isSelected,
     required this.onTap,
   });
 
   final FeelModel item;
+  final bool isSelected;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Container(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 300),
         height: 100,
         decoration: BoxDecoration(
-          color: AppColor.white,
+          color: isSelected
+              ? AppColor.primary.withValues(alpha: .2)
+              : AppColor.white,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0, 16),
-              blurRadius: 32,
-              color: AppColor.black.withValues(alpha: .2),
-            ),
-            BoxShadow(
-              offset: Offset(0, 4),
-              blurRadius: 4,
-              color: AppColor.black.withValues(alpha: .1),
-            ),
-          ],
+          boxShadow: isSelected
+              ? []
+              : [
+                  BoxShadow(
+                    offset: Offset(0, 16),
+                    blurRadius: 32,
+                    color: AppColor.black.withValues(alpha: .2),
+                  ),
+                  BoxShadow(
+                    offset: Offset(0, 4),
+                    blurRadius: 4,
+                    color: AppColor.black.withValues(alpha: .1),
+                  ),
+                ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +50,10 @@ class AppointmentFeesItem extends StatelessWidget {
               item.icon,
               width: 20,
               height: 20,
-              colorFilter: ColorFilter.mode(AppColor.grey2, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(
+                isSelected ? AppColor.primary : AppColor.grey2,
+                BlendMode.srcIn,
+              ),
             ),
             VerticalSpacer(12),
             Text(
@@ -51,14 +61,14 @@ class AppointmentFeesItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
-                color: AppColor.grey1,
+                color: isSelected ? AppColor.primary : AppColor.grey1,
               ),
             ),
             Text(
               "\$${item.price}",
               style: TextStyle(
                 fontSize: 16,
-                color: AppColor.black,
+                color: isSelected ? AppColor.primary : AppColor.black,
                 fontWeight: FontWeight.bold,
               ),
             ),

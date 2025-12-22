@@ -5,17 +5,22 @@ import 'package:medigo/data/dummy.dart';
 import 'package:medigo/data/model/filter_model.dart';
 
 import '../data/model/doctor_model.dart';
+import '../data/model/feel_model.dart';
 
 class AppointmentController extends GetxController {
   FilterModel? _selectedConsultationType;
   FilterModel? _selectedAvailability;
   String? _selectedTime;
   late DoctorModel _doctor;
+  FeelModel? _selectedFee;
+  DateTime? date;
+
   // Getters
   FilterModel? get selectedConsultationType => _selectedConsultationType;
   FilterModel? get selectedAvailability => _selectedAvailability;
   String? get selectedTime => _selectedTime;
   DoctorModel get doctor => _doctor;
+  FeelModel? get selectedFee => _selectedFee;
 
   @override
   void onInit() {
@@ -53,7 +58,57 @@ class AppointmentController extends GetxController {
     update();
   }
 
+  void selectFee(FeelModel fee) {
+    if (_selectedFee == fee) {
+      _selectedFee = null;
+    } else {
+      _selectedFee = fee;
+    }
+    update();
+  }
+
+  void onSelectDate(DateTime selectedDate) {
+    date = selectedDate;
+    update();
+  }
+
   void onBooking() {
-    Get.toNamed(AppRoute.patient);
+    if (_selectedConsultationType == null) {
+      Get.snackbar(
+        "Required",
+        "Please select a consultation type",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return;
+    }
+
+    if (_selectedTime == null) {
+      Get.snackbar(
+        "Required",
+        "Please select a time",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return;
+    }
+
+    if (date == null) {
+      Get.snackbar(
+        "Required",
+        "Please select a date",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return;
+    }
+
+    Get.toNamed(
+      AppRoute.patient,
+      arguments: {
+        "doctor": _doctor,
+        "consultationType": _selectedConsultationType,
+        "time": _selectedTime,
+        "fee": _selectedFee,
+        "date": date,
+      },
+    );
   }
 }

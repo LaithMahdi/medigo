@@ -12,6 +12,7 @@ class DoctorDetailController extends GetxController {
 
   @override
   void onInit() {
+    _doctor = Get.arguments["doctor"];
     debugPrint("Doctor Detail: $_doctor");
     super.onInit();
   }

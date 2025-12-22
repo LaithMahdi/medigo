@@ -26,7 +26,11 @@ class AppointmentFeesSection extends StatelessWidget {
                     children: List.generate(fees.length, (index) {
                       final item = fees[index];
                       return Expanded(
-                        child: AppointmentFeesItem(item: item, onTap: () {}),
+                        child: AppointmentFeesItem(
+                          item: item,
+                          isSelected: controller.selectedFee == item,
+                          onTap: () => controller.selectFee(item),
+                        ),
                       );
                     }),
                   ),
