@@ -10,6 +10,7 @@ class DoctorModel {
   int ratingNumber;
   int patientNumber;
   String? createdAt;
+  String? availability;
 
   DoctorModel({
     required this.id,
@@ -23,6 +24,7 @@ class DoctorModel {
     required this.ratingNumber,
     required this.patientNumber,
     this.createdAt,
+    this.availability,
   });
 
   factory DoctorModel.fromJson(Map<String, dynamic> json) {
@@ -38,11 +40,12 @@ class DoctorModel {
       ratingNumber: json['rating_number'],
       patientNumber: json['patient_number'],
       createdAt: json['created_at'],
+      availability: json['availability'],
     );
   }
 
   @override
   String toString() {
-    return 'DoctorModel{id: $id, name: $name, image: $image, description: $description, gender: $gender, specialityId: $specialityId, price: $price, experienceNumber: $experienceNumber, ratingNumber: $ratingNumber, patientNumber: $patientNumber, createdAt: $createdAt}';
+    return 'DoctorModel{id: $id, name: $name, image: $image, description: $description, gender: $gender, specialityId: $specialityId, price: $price, experienceNumber: $experienceNumber, ratingNumber: $ratingNumber, patientNumber: $patientNumber, createdAt: $createdAt, availability: $availability}';
   }
 }

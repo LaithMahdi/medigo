@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:medigo/core/constant/app_color.dart';
 import 'package:medigo/shared/spacer.dart';
 import '../../controllers/speciality_controller.dart';
-import '../../core/config.dart';
 import '../../shared/buttons/custom_back_button.dart';
 import '../../shared/search_row.dart';
 import 'widgets/speciality_doctor_list_view.dart';

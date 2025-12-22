@@ -5,6 +5,7 @@ import 'package:medigo/data/model/doctor_model.dart';
 import 'package:medigo/data/model/filter_model.dart';
 import 'package:medigo/data/model/speciality_model.dart';
 import 'package:medigo/main.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SpecialityController extends GetxController {
   late SpecialityModel _speciality;
@@ -19,6 +20,7 @@ class SpecialityController extends GetxController {
   double _maxPriceChanges = 1000;
   bool _isLoading = false;
   final List<DoctorModel> _doctors = [];
+  FilterModel? _selectedSortBy;
 
   // Getters
   SpecialityModel get speciality => _speciality;
@@ -33,6 +35,7 @@ class SpecialityController extends GetxController {
   double get maxPriceChanges => _maxPriceChanges;
   bool get isLoading => _isLoading;
   List<DoctorModel> get doctors => _doctors;
+  FilterModel? get selectedSortBy => _selectedSortBy;
 
   @override
   void onInit() {
@@ -44,20 +47,51 @@ class SpecialityController extends GetxController {
 
   Future<void> onLoadPopularDoctors() async {
     try {
+      _doctors.clear();
       setLoading(true);
-      final data = await supabase!
+
+      final query = supabase!
           .from('doctor')
           .select('*')
           .eq("speciality", _speciality.id);
+
+      PostgrestTransformBuilder<PostgrestList> sortedQuery;
+
+      switch (_selectedSortBy?.value) {
+        case "name_asc":
+          sortedQuery = query.order("full_name", ascending: true);
+          break;
+
+        case "experience_asc":
+          sortedQuery = query.order("experience_number", ascending: true);
+          break;
+
+        case "rating_asc":
+          sortedQuery = query.order("rating_number", ascending: true);
+          break;
+
+        case "fee_asc":
+          sortedQuery = query.order("price", ascending: true);
+          break;
+
+        case "availability":
+          sortedQuery = query.order("availability", ascending: true);
+          break;
+
+        default:
+          sortedQuery = query.order("full_name", ascending: true);
+      }
+
+      final data = await sortedQuery;
+
       for (var element in data) {
         _doctors.add(DoctorModel.fromJson(element));
       }
+
       setLoading(false);
-      (false);
     } catch (e) {
-      debugPrint("Error loading Dcotor: $e");
+      debugPrint("Error loading Doctor: $e");
       setLoading(false);
-      (false);
     }
   }
 
@@ -116,6 +150,15 @@ class SpecialityController extends GetxController {
 
   void setLoading(bool value) {
     _isLoading = value;
+    update();
+  }
+
+  void setSelectedSortBy(FilterModel sortBy) {
+    if (_selectedSortBy == sortBy) {
+      _selectedSortBy = null;
+    } else {
+      _selectedSortBy = sortBy;
+    }
     update();
   }
 }
