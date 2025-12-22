@@ -10,7 +10,7 @@ class PatientScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(PatientController());
+    Get.put(PatientController());
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -28,11 +28,15 @@ class PatientScreen extends StatelessWidget {
           SliverToBoxAdapter(child: PatientForm()),
         ],
       ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.all(24),
-        child: ElevatedButton(
-          onPressed: () => controller.onBooking(),
-          child: Text("Book Appointment"),
+      bottomNavigationBar: GetBuilder<PatientController>(
+        builder: (controller) => Container(
+          padding: EdgeInsets.all(24),
+          child: controller.isLoading
+              ? Center(child: CircularProgressIndicator())
+              : ElevatedButton(
+                  onPressed: () => controller.onBooking(),
+                  child: Text("Book Appointment"),
+                ),
         ),
       ),
     );

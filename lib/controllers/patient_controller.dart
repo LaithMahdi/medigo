@@ -6,16 +6,17 @@ import 'package:medigo/core/constant/app_route.dart';
 import 'package:medigo/data/model/doctor_model.dart';
 import 'package:medigo/data/model/patient_model.dart';
 import 'package:medigo/main.dart';
+import '../data/model/appointment_model.dart';
 import '../data/model/feel_model.dart';
 import '../data/model/filter_model.dart';
 
 class PatientController extends GetxController {
   final GlobalKey<FormState> _patientFormKey = GlobalKey<FormState>();
   final TextEditingController _fullName = TextEditingController(
-    text: "Laith Mahdi",
+    text: "Tassnim Test",
   );
   final TextEditingController _email = TextEditingController(
-    text: "laith@gmail.com",
+    text: "tassnim@gmail.com",
   );
   final TextEditingController _phoneNumber = TextEditingController(
     text: "12345678",
@@ -28,6 +29,8 @@ class PatientController extends GetxController {
   late String? _selectedTime;
   late FeelModel? _selectedFee;
   late DateTime? _date;
+  bool _isLoading = false;
+  PatientModel? _patientInserted;
 
   // Getters
   GlobalKey<FormState> get patientFormKey => _patientFormKey;
@@ -37,6 +40,7 @@ class PatientController extends GetxController {
   FilterModel? get selectedGender => _selectedGender;
   TextEditingController get age => _age;
   TextEditingController get detail => _detail;
+  bool get isLoading => _isLoading;
 
   @override
   void onInit() {
@@ -56,7 +60,6 @@ class PatientController extends GetxController {
   }
 
   void onBooking() {
-    // Get.offAllNamed(AppRoute.successAppointment);
     if (_patientFormKey.currentState!.validate()) {
       if (_selectedGender == null) {
         Get.snackbar("Error", "Please select gender");
@@ -83,10 +86,50 @@ class PatientController extends GetxController {
           .insert(patient.toJson())
           .select()
           .single();
-
-      log("Patient inserted: $response");
+      int patientId = response['id'];
+      _patientInserted = PatientModel.fromJson(response);
+      insertAppointment(patientId);
     } catch (e) {
       debugPrint("Error inserting patient: $e");
+    }
+  }
+
+  void insertAppointment(int patientId) async {
+    try {
+      setLoading(true);
+      final userId = supabase!.auth.currentUser?.id ?? '';
+      AppointmentModel appointment = AppointmentModel(
+        patientId: patientId,
+        doctorId: _doctor.id,
+        consultationType: _selectedConsultationType!.value,
+        time: _selectedTime!,
+        consultationFee: _selectedFee?.value,
+        date: _date!.toIso8601String(),
+        userId: userId,
+      );
+
+      debugPrint("Inserting appointment: $appointment");
+
+      final response = await supabase!
+          .from("appointment")
+          .insert(appointment.toJson())
+          .select()
+          .single();
+
+      log("appointment inserted: $response");
+      setLoading(false);
+      Get.offAllNamed(
+        AppRoute.successAppointment,
+        arguments: {
+          "doctor": _doctor,
+          "patient": _patientInserted,
+          "time": _selectedTime,
+          "date": _date,
+        },
+      );
+    } catch (e) {
+      debugPrint("Error inserting appointment: $e");
+      setLoading(false);
     }
   }
 
@@ -107,5 +150,10 @@ class PatientController extends GetxController {
     _age.dispose();
     _detail.dispose();
     super.onClose();
+  }
+
+  void setLoading(bool value) {
+    _isLoading = value;
+    update();
   }
 }

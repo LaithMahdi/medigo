@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:medigo/core/config.dart';
 import 'package:medigo/core/constant/app_color.dart';
 import 'package:medigo/core/constant/app_image.dart';
@@ -32,24 +33,24 @@ class SuccessAppointmentScreen extends StatelessWidget {
             ),
             VerticalSpacer(15),
             SuccessAppointmentTextRich(
-              label: "Laith mahdi,",
+              label: "${controller.patient.fullName},",
               subLabel: " your appointment with",
             ),
             VerticalSpacer(6),
             SuccessAppointmentTextRich(
-              label: "Dr. Ayesha Rahman",
+              label: controller.doctor.name,
               subLabel: "  had been created.",
             ),
             VerticalSpacer(17),
             Divider(color: AppColor.grey3),
             VerticalSpacer(17),
             SuccessAppointmentRowIcon(
-              label: "15 Nov 2025",
+              label: DateFormat("d MMM y").format(controller.date),
               icon: AppImage.imagesIconesCalendar,
             ),
             VerticalSpacer(17),
             SuccessAppointmentRowIcon(
-              label: "10:00",
+              label: controller.time,
               icon: AppImage.imagesIconesClock,
             ),
           ],
