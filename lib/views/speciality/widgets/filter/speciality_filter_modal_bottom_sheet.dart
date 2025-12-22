@@ -42,8 +42,15 @@ class SpecialityFilterModalBottomSheet extends GetView<SpecialityController> {
             ),
           ),
           SpecialityModalSheetBottomButtons(
-            onPressedClear: () {},
-            onPressedFilter: () {},
+            onPressedClear: () {
+              Navigator.pop(context);
+              controller.clearAllFilters();
+              controller.onLoadPopularDoctors();
+            },
+            onPressedFilter: () {
+              Navigator.pop(context);
+              controller.onLoadPopularDoctors();
+            },
           ),
         ],
       ),

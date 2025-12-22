@@ -105,10 +105,10 @@ List<FilterModel> consultationTypeFilters = [
 ];
 
 List<FilterModel> genderFilters = [
-  FilterModel(name: "Male", value: "male", image: AppImage.imagesIconesMale),
+  FilterModel(name: "Male", value: "Male", image: AppImage.imagesIconesMale),
   FilterModel(
     name: "Female",
-    value: "female",
+    value: "Female",
     image: AppImage.imagesIconesFemale,
   ),
 ];

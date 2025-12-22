@@ -17,6 +17,20 @@ class SpecialityDoctorListView extends StatelessWidget {
               hasScrollBody: false,
               child: Center(child: CircularProgressIndicator()),
             )
+          : controller.doctors.isEmpty
+          ? SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.search_off, size: 80, color: Colors.grey),
+                  Text(
+                    "No doctors found with the applied filters.",
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                ],
+              ),
+            )
           : SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: Config.spacing15),
               sliver: SliverList.separated(

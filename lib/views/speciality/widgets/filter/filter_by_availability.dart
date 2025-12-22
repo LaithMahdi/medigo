@@ -22,7 +22,7 @@ class FilterByAvailability extends StatelessWidget {
               final item = availabilityFilters[index];
               return CustomFilterButton(
                 item: item,
-                isSelected: controller.selectedAvailability.contains(item),
+                isSelected: controller.selectedAvailability == item,
                 onTap: () => controller.setSelectedAvailability(item),
               );
             }),

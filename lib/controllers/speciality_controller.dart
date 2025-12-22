@@ -9,22 +9,23 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SpecialityController extends GetxController {
   late SpecialityModel _speciality;
-  final List<FilterModel> _selectedAvailability = [];
+  FilterModel? _selectedAvailability;
   FilterModel? _selectedConsultationType;
   FilterModel? _selectedGender;
   FilterModel? _selectedExperienceLevel;
   FilterModel? _selectedDoctorRating;
   final double _minPrice = 0;
-  final double _maxPrice = 1000;
+  final double _maxPrice = 400;
   double _minPriceChanges = 0;
-  double _maxPriceChanges = 1000;
+  double _maxPriceChanges = 400;
   bool _isLoading = false;
   final List<DoctorModel> _doctors = [];
   FilterModel? _selectedSortBy;
+  final TextEditingController _search = TextEditingController();
 
   // Getters
   SpecialityModel get speciality => _speciality;
-  List<FilterModel> get selectedAvailability => _selectedAvailability;
+  FilterModel? get selectedAvailability => _selectedAvailability;
   FilterModel? get selectedConsultationType => _selectedConsultationType;
   FilterModel? get selectedGender => _selectedGender;
   FilterModel? get selectedExperienceLevel => _selectedExperienceLevel;
@@ -36,10 +37,14 @@ class SpecialityController extends GetxController {
   bool get isLoading => _isLoading;
   List<DoctorModel> get doctors => _doctors;
   FilterModel? get selectedSortBy => _selectedSortBy;
+  TextEditingController get search => _search;
 
   @override
   void onInit() {
     _speciality = Get.arguments["speciality"];
+    _search.addListener(() {
+      onLoadPopularDoctors();
+    });
     debugPrint("Speciality: $_speciality");
     onLoadPopularDoctors();
     super.onInit();
@@ -50,10 +55,28 @@ class SpecialityController extends GetxController {
       _doctors.clear();
       setLoading(true);
 
-      final query = supabase!
+      var query = supabase!
           .from('doctor')
           .select('*')
           .eq("speciality", _speciality.id);
+
+      if (_selectedAvailability != null) {
+        query = query.eq("availability", _selectedAvailability!.value);
+      }
+
+      if (_selectedGender != null) {
+        query = query.eq("gender", _selectedGender!.value);
+      }
+
+      if (_minPriceChanges > _minPrice || _maxPriceChanges < _maxPrice) {
+        query = query
+            .gte("price", _minPriceChanges)
+            .lte("price", _maxPriceChanges);
+      }
+
+      if (_search.text.isNotEmpty) {
+        query = query.ilike("full_name", "%${_search.text}%");
+      }
 
       PostgrestTransformBuilder<PostgrestList> sortedQuery;
 
@@ -96,10 +119,10 @@ class SpecialityController extends GetxController {
   }
 
   void setSelectedAvailability(FilterModel availability) {
-    if (_selectedAvailability.contains(availability)) {
-      _selectedAvailability.remove(availability);
+    if (_selectedAvailability == availability) {
+      _selectedAvailability = null;
     } else {
-      _selectedAvailability.add(availability);
+      _selectedAvailability = availability;
     }
     update();
   }
@@ -159,6 +182,17 @@ class SpecialityController extends GetxController {
     } else {
       _selectedSortBy = sortBy;
     }
-    update();
+    onLoadPopularDoctors();
+  }
+
+  void clearAllFilters() {
+    _selectedAvailability = null;
+    _selectedConsultationType = null;
+    _selectedGender = null;
+    _selectedExperienceLevel = null;
+    _selectedDoctorRating = null;
+    _minPriceChanges = _minPrice;
+    _maxPriceChanges = _maxPrice;
+    onLoadPopularDoctors();
   }
 }

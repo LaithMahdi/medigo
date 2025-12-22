@@ -37,7 +37,7 @@ class SpecialityScreen extends StatelessWidget {
           SliverToBoxAdapter(child: VerticalSpacer(15)),
           SliverToBoxAdapter(
             child: SearchRow(
-              controller: TextEditingController(),
+              controller: controller.search,
               onTap: () {
                 showModalBottomSheet(
                   context: context,

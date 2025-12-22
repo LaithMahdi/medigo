@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:get/state_manager.dart';
 import 'package:medigo/core/constant/app_color.dart';
 import 'package:medigo/data/dummy.dart';
