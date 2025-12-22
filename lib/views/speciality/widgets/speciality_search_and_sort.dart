@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
 import '../../../controllers/speciality_controller.dart';
 import '../../../core/config.dart';
 import '../../../core/constant/app_color.dart';
