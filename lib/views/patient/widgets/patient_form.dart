@@ -85,7 +85,8 @@ class PatientForm extends GetView<PatientController> {
               hintText: "Patient detail information here ...",
               controller: controller.detail,
               maxLines: 5,
-              validator: (value) => validateInput(value, min: 8, max: 20000),
+              validator: (value) =>
+                  validateInput(value, max: 20000, isRequired: false),
             ),
           ],
         ),
