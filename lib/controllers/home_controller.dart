@@ -63,7 +63,8 @@ class HomeController extends GetxController {
     Get.toNamed(AppRoute.speciality, arguments: {"speciality": item});
   }
 
-  void onDetailView() => Get.toNamed(AppRoute.doctorDetail);
+  void onDetailView(DoctorModel doctor) =>
+      Get.toNamed(AppRoute.doctorDetail, arguments: {"doctor": doctor});
 
   void setLoading(bool value) {
     _isLoading = value;

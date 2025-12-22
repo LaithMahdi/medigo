@@ -24,7 +24,7 @@ class HomePopularDoctorSection extends StatelessWidget {
                   final doctor = controller.popularDoctors[index];
                   return PopularDoctorCard(
                     doctor: doctor,
-                    onTap: () => controller.onDetailView(),
+                    onTap: () => controller.onDetailView(doctor),
                   );
                 }),
               ),

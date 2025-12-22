@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../../controllers/doctor_detail_controller.dart';
 import '../../../core/config.dart';
 import '../../../core/constant/app_color.dart';
 
-class DoctorDetailInfo extends StatelessWidget {
+class DoctorDetailInfo extends GetView<DoctorDetailController> {
   const DoctorDetailInfo({super.key});
 
   @override
@@ -17,7 +19,7 @@ class DoctorDetailInfo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Dr. Ayesha Rahman",
+                controller.doctor.name,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -45,7 +47,7 @@ class DoctorDetailInfo extends StatelessWidget {
           ),
           Text.rich(
             TextSpan(
-              text: "\$15",
+              text: "\$${controller.doctor.price}",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w500,

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../../controllers/doctor_detail_controller.dart';
 import '../../../core/config.dart';
 import '../../../core/constant/app_color.dart';
 import '../../../core/constant/app_image.dart';
 import 'doctor_detail_stat.dart';
 
-class DoctorDetailStatSection extends StatelessWidget {
+class DoctorDetailStatSection extends GetView<DoctorDetailController> {
   const DoctorDetailStatSection({super.key});
 
   @override
@@ -16,14 +18,14 @@ class DoctorDetailStatSection extends StatelessWidget {
         children: [
           Expanded(
             child: DoctorDetailStat(
-              title: "1.2K",
+              title: "${controller.doctor.patientNumber}",
               value: "Patients",
               icon: AppImage.imagesIconesUsers,
             ),
           ),
           Expanded(
             child: DoctorDetailStat(
-              title: "10 Yrs",
+              title: "${controller.doctor.experienceNumber} Yrs",
               value: "Experience",
               icon: AppImage.imagesIconesBadge,
               color: AppColor.roseE8,
@@ -31,7 +33,7 @@ class DoctorDetailStatSection extends StatelessWidget {
           ),
           Expanded(
             child: DoctorDetailStat(
-              title: "4.5",
+              title: "${controller.doctor.ratingNumber}",
               value: "Ratings",
               icon: AppImage.imagesIconesStarOutline,
               color: AppColor.yellowF7,

@@ -25,7 +25,7 @@ class DoctorDetailScreen extends StatelessWidget {
           SliverAppBar(
             leading: CustomBackButton(),
             title: Text(
-              "Dr. Ayesha Rahman",
+              controller.doctor.name,
               style: TextStyle(
                 fontSize: 16,
                 color: AppColor.black,

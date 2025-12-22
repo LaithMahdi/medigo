@@ -40,7 +40,7 @@ class SpecialityDoctorListView extends StatelessWidget {
                   return PopularDoctorCard(
                     doctor: doctor,
                     enableFullWidth: true,
-                    onTap: () => controller.onDetailView(),
+                    onTap: () => controller.onDetailView(doctor),
                   );
                 },
                 separatorBuilder: (context, index) => VerticalSpacer(23),

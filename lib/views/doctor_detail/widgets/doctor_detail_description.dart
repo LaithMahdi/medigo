@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:medigo/core/config.dart';
 import 'package:medigo/core/constant/app_color.dart';
+import '../../../controllers/doctor_detail_controller.dart';
 import 'doctor_detail_title.dart';
 
-class DoctorDetailDescription extends StatelessWidget {
+class DoctorDetailDescription extends GetView<DoctorDetailController> {
   const DoctorDetailDescription({super.key});
 
   @override
@@ -16,7 +18,7 @@ class DoctorDetailDescription extends StatelessWidget {
         children: [
           DoctorDetailTitle("About"),
           Text(
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            controller.doctor.description,
             textAlign: TextAlign.justify,
             style: TextStyle(fontSize: 12, color: AppColor.grey1, height: 3),
           ),
