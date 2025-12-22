@@ -45,11 +45,14 @@ class HomeController extends GetxController {
   Future<void> onLoadPopularDoctors() async {
     try {
       setLoadingPopularDoctors(true);
-      final data = await supabase!.from('doctor').select('*');
+      final data = await supabase!
+          .from('doctor')
+          .select('*,speciality!inner(*)')
+          .limit(5);
+
       for (var element in data) {
         _popularDoctors.add(DoctorModel.fromJson(element));
       }
-
       setLoadingPopularDoctors(true);
       (false);
     } catch (e) {

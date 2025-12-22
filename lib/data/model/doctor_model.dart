@@ -1,16 +1,19 @@
+import 'package:medigo/data/model/speciality_model.dart';
+
 class DoctorModel {
   int id;
   String name;
   String image;
   String description;
   String gender;
-  int specialityId;
+  int? specialityId;
   double price;
   int experienceNumber;
   int ratingNumber;
   int patientNumber;
   String? createdAt;
   String? availability;
+  SpecialityModel? speciality;
 
   DoctorModel({
     required this.id,
@@ -18,13 +21,14 @@ class DoctorModel {
     required this.image,
     required this.description,
     required this.gender,
-    required this.specialityId,
+    this.specialityId,
     required this.price,
     required this.experienceNumber,
     required this.ratingNumber,
     required this.patientNumber,
     this.createdAt,
     this.availability,
+    this.speciality,
   });
 
   factory DoctorModel.fromJson(Map<String, dynamic> json) {
@@ -34,13 +38,15 @@ class DoctorModel {
       image: json['image'],
       description: json['description'],
       gender: json['gender'],
-      specialityId: json['speciality'],
       price: (json['price'] as num).toDouble(),
       experienceNumber: json['experience_number'],
       ratingNumber: json['rating_number'],
       patientNumber: json['patient_number'],
       createdAt: json['created_at'],
       availability: json['availability'],
+      speciality: json['speciality'] != null
+          ? SpecialityModel.fromJson(json['speciality'])
+          : null,
     );
   }
 
