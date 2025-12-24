@@ -12,14 +12,41 @@
 
 [Features](#-features) • [Tech Stack](#-tech-stack) • [Installation](#-installation) • [Architecture](#-architecture) • [Contributing](#-contributing)
 
+### 📸 App Screenshots
+
+<div align="right">
+  <img src="assets/images-git/splash.png" alt="Splash Screen" width="200"/>
+  <img src="assets/images-git/home.png" alt="Home Dashboard" width="200"/>
+  <img src="assets/images-git/specilaity_detail.png" alt="Specialty Detail" width="200"/>
+  <br/>
+  <img src="assets/images-git/filter.png" alt="Advanced Filters" width="200"/>
+  <img src="assets/images-git/doctor_detail.png" alt="Doctor Detail" width="200"/>
+  <img src="assets/images-git/appointment.png" alt="Appointment Booking" width="200"/>
+</div>
+
 ---
 
-### 📺 Video Tutorial
+## 📺 Video Tutorial Series
 
-[![YouTube Playlist](https://img.shields.io/badge/YouTube-Playlist-red?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/playlist?list=PLGwhLIITEIB_u-pBiiUxAf3Kz3Nu9VAY8)
+<div align="center">
 
-**Learn how to build this app from scratch!**  
-_Follow step-by-step video tutorials covering Flutter development and database integration._
+### 🎬 Learn to Build Medigo from Scratch!
+
+[![Watch on YouTube](https://img.shields.io/badge/▶_WATCH_FULL_PLAYLIST-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=282828)](https://www.youtube.com/playlist?list=PLGwhLIITEIB_u-pBiiUxAf3Kz3Nu9VAY8)
+
+<br/>
+
+**📚 Complete Step-by-Step Tutorial Series**
+
+✨ Flutter Development from Basics to Advanced  
+✨ Supabase Database Integration  
+✨ Real-time Appointment System  
+✨ Authentication & Security Implementation  
+✨ UI/UX Best Practices
+
+[🔗 Access the Playlist Here](https://www.youtube.com/playlist?list=PLGwhLIITEIB_u-pBiiUxAf3Kz3Nu9VAY8)
+
+</div>
 
 </div>
 
@@ -757,12 +784,6 @@ This project is private and not published to any package repository.
 - [ ] 📊 Analytics dashboard for doctors
 - [ ] ⭐ Doctor reviews and ratings system
 - [ ] 🏥 Hospital/clinic location integration
-
----
-
-## 📸 Screenshots
-
-> Coming soon! Add screenshots of your app here.
 
 ---
 
