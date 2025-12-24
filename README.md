@@ -648,10 +648,11 @@ We welcome contributions! Here's how you can help:
 
 ### Development Workflow
 
-1. **Fork the Repository**
+1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/medigo.git
+   git clone https://github.com/LaithMahdi/medigo.git
+   cd medigo
    ```
 
 2. **Create a Feature Branch**
@@ -665,20 +666,26 @@ We welcome contributions! Here's how you can help:
    - Follow the existing code style
    - Write meaningful commit messages
    - Add tests if applicable
+   - Test your changes thoroughly
 
 4. **Commit Your Changes**
 
    ```bash
+   git add .
    git commit -m "feat: add new feature"
    ```
 
-5. **Push to Your Fork**
+5. **Push Your Branch**
 
    ```bash
    git push origin feature/your-feature-name
    ```
 
 6. **Create a Pull Request**
+
+   - Go to the repository on GitHub
+   - Click on "Pull Requests" and then "New Pull Request"
+   - Select your feature branch and create the PR
 
 ### Coding Standards
 
